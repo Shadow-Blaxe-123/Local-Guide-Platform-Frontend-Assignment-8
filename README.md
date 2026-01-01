@@ -81,9 +81,6 @@ This project democratizes travel guiding, allowing locals to monetize their know
 ### 4.1 Navbar
 
 - **When Logged Out**:
-  - Logo (links to Home)
-  - Explore Tours
-  - Become a Guide
   - Login
   - Register
 - **When Logged In (Tourist)**:
