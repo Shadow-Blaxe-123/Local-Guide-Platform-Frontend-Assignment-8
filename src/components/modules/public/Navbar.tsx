@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-// import { getCookie } from "@/lib/tokenHandlers";
+import { getCookie } from "@/lib/tokenHandler";
+
 // import LogoutButton from "./LogoutButton";1
 
 const Navbar = async () => {
@@ -18,12 +19,10 @@ const Navbar = async () => {
     { href: "#", label: "About Us" },
     { href: "#", label: "Explore Tours" },
     { href: "#", label: "Become a Guide" },
-    { href: "#", label: "Login" },
-    { href: "#", label: "Register" },
   ];
-  // const accessToken = await getCookie("accessToken");
+  const accessToken = await getCookie("accessToken");
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur  dark:bg-background/95">
+    <header className="sticky top-0 z-50 w-full border-b-2 shadow-lg bg-background/95 backdrop-blur  dark:bg-background/95 ">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
           <Image src="/logo.png" alt="logo" width={32} height={32} />
@@ -42,15 +41,15 @@ const Navbar = async () => {
           ))}
         </nav>
 
-        {/* <div className="hidden md:flex items-center space-x-2">
+        <div className="hidden md:flex items-center space-x-2">
           {accessToken ? (
-            <LogoutButton />
+            <Button>Logout</Button>
           ) : (
             <Link href="/login" className="text-lg font-medium">
               <Button>Login</Button>
             </Link>
           )}
-        </div> */}
+        </div>
 
         {/* Mobile Menu */}
 

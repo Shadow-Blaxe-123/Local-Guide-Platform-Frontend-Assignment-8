@@ -1,10 +1,15 @@
 # 🗺️ Local Guide Platform
 
-## 1. Project Overview
+## Complete Rate ((270-266)+8)/270 * 100 = 4.4%
+
+<!-- ## 1. Project Overview
 
 Local Guide Platform connects travelers with passionate local experts who can offer authentic, personalized experiences. Unlike generic tour agencies, this platform empowers individuals to share their city’s hidden gems, culture and stories. Travelers can find guides who match their interests whether for a food crawl, a photography walk or a historical tour and explore a destination like a local.
 
-This project democratizes travel guiding, allowing locals to monetize their knowledge and travelers to access unique, off-the-beaten-path experiences.
+This project democratizes travel guiding, allowing locals to monetize their knowledge and travelers to access unique, off-the-beaten-path experiences. 
+
+commented out so that it does not count towards the completed rate.
+-->
 
 ## 2. Objectives
 
