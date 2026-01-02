@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import LoginSuccessToast from "@/components/modules/public/auth/LoginSuccessToast";
+import LogoutSuccessToast from "@/components/modules/public/auth/LogoutSuccessToast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Toaster richColors />
+        <Toaster richColors position="top-center" />
+        <LoginSuccessToast />
+        <LogoutSuccessToast />
         {children}
       </body>
     </html>

@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { getCookie } from "@/lib/tokenHandler";
+import LogoutButton from "./auth/LogoutButton";
 
 // import LogoutButton from "./LogoutButton";1
 
@@ -43,7 +44,7 @@ const Navbar = async () => {
 
         <div className="hidden md:flex items-center space-x-2">
           {accessToken ? (
-            <Button>Logout</Button>
+            <LogoutButton />
           ) : (
             <Link href="/login" className="text-lg font-medium">
               <Button>Login</Button>

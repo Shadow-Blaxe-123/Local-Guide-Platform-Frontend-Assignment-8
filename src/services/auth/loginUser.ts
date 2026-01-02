@@ -3,12 +3,16 @@
 
 import { parse } from "cookie";
 import z from "zod";
-import { setCookie } from "./tokenHandler";
+
 import { JwtPayload, verify } from "jsonwebtoken";
-import { getDefaultDashboardRoute, isValidRedirectForRole } from "./auth-utils";
+
 import { redirect } from "next/navigation";
 import { UserRole } from "@/types";
-// import { UserRole } from "@/types";
+import { setCookie } from "@/lib/tokenHandler";
+import {
+  getDefaultDashboardRoute,
+  isValidRedirectForRole,
+} from "@/lib/auth-utils";
 
 const loginValidationSchema = z.object({
   email: z.email({ error: "Invalid email address" }),
