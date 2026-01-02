@@ -11,17 +11,46 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { getCookie } from "@/lib/tokenHandler";
 import LogoutButton from "./auth/LogoutButton";
+import { getUserInfo } from "@/services/auth/getUserinfo";
 
 // import LogoutButton from "./LogoutButton";1
 
 const Navbar = async () => {
+  const accessToken = await getCookie("accessToken");
+
+  const user = await getUserInfo();
+
   const navItems = [
     { href: "/", label: "Home" },
     { href: "#", label: "About Us" },
-    { href: "#", label: "Explore Tours" },
-    { href: "#", label: "Become a Guide" },
   ];
-  const accessToken = await getCookie("accessToken");
+
+  if (user?.role === "TOURIST") {
+    navItems.push(
+      { href: "#", label: "Explore Tours" },
+      { href: "#", label: "My Bookings" },
+      { href: "#", label: "Profile" }
+    );
+  } else if (user?.role === "GUIDE") {
+    navItems.push(
+      { href: "#", label: "Explore Tours" },
+      { href: "#", label: "Dashboard" },
+      { href: "#", label: "Profile" }
+    );
+  } else if (user?.role === "ADMIN") {
+    navItems.push(
+      { href: "#", label: "Dashboard" },
+      { href: "#", label: "Manage Users" },
+      { href: "#", label: "Manage Listings" },
+      { href: "#", label: "Profile" }
+    );
+  } else {
+    navItems.push(
+      { href: "#", label: "Explore Tours" },
+      { href: "#", label: "Become a Guide" }
+    );
+  }
+
   return (
     <header className="sticky top-0 z-50 w-full border-b-2 shadow-lg bg-background/95 backdrop-blur  dark:bg-background/95 ">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">

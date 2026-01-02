@@ -1,6 +1,6 @@
 # 🗺️ Local Guide Platform
 
-## Complete Rate ((270-266)+8)/270 * 100 = 4.4%
+## Complete Rate ((270-231)+8)/270 * 100 = 4.4%
 
 <!-- ## 1. Project Overview
 
@@ -79,38 +79,9 @@ commented out so that it does not count towards the completed rate.
   - Secure payment processing for tour bookings.
   - Integration with Stripe / SSLCommerz / any other payment gateway.
 
-## 4. Pages & Functional Requirements
-
-> **Note:** The pages listed below are examples to guide implementation. You must add additional pages and features as needed to meet all project requirements and create a complete, functional platform.
-
-### 4.1 Navbar
-
-- **When Logged In (Tourist)**:
-  - Logo (links to Home)
-  - Explore Tours
-  - My Bookings
-  - Profile
-  - Logout
-- **When Logged In (Guide)**:
-  - Logo (links to Home)
-  - Explore Tours
-  - Dashboard (My Listings, Bookings)
-  - Profile
-  - Logout
-- **When Logged In (Admin)**:
-  - Logo (links to Home)
-  - Admin Dashboard
-  - Manage Users
-  - Manage Listings
-  - Profile
-  - Logout
-
-> **Note:** Feel free to add other navigation options as needed.
-
 ### 4.2 Authentication Pages
 
 - **`/register`**: Sign up with role selection (Tourist/Guide). Admin accounts are created separately.
-- **`/login`**: Standard secure login.
 
 ### 4.3 Home / Landing Page (`/`)
 
@@ -140,7 +111,6 @@ commented out so that it does not count towards the completed rate.
 
 - Sidebar with filters (Date, Price, Category).
 - Main area showing results.
-- **Map View** (Optional): Show guide locations on a map.
 
 ### 4.8 Listing Details Page (`/tours/[id]`)
 
@@ -155,7 +125,6 @@ commented out so that it does not count towards the completed rate.
 | 📅Availability Calendar | Guides set specific available dates/times           |
 | 🗺️Interactive Map       | View tour routes or meeting points on Google/Mapbox |
 | 🏅Badges                | "Super Guide", "Newcomer", "Foodie Expert"          |
-| 🌐Multi-language        | UI translation for international users              |
 
 ## 6. Folder & API Structure
 
@@ -209,7 +178,6 @@ frontend/
 
 | Category       | Technologies                                    |
 | :------------- | :---------------------------------------------- |
-| **Frontend**   | Next.js, Tailwind CSS                           |
 | **Payment**    | SSLCommerz / Stripe / Any other payment gateway |
 | **Deployment** | Vercel, Render, Railway                         |
 
@@ -260,7 +228,3 @@ Password: Your Admin Password
 ### ⏰ Deadline
 
 - Jan 5, 2025, at 11:59 PM
-
-### 🚫 Important Note
-
-**Plagiarism will not be tolerated.** Ensure that the code you submit is your own work. Any instances of plagiarism will result in **0 Marks**
