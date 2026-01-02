@@ -46,9 +46,14 @@ const Navbar = async () => {
           {accessToken ? (
             <LogoutButton />
           ) : (
-            <Link href="/login" className="text-lg font-medium">
-              <Button>Login</Button>
-            </Link>
+            <>
+              <Link href="/login" className="text-lg font-medium">
+                <Button>Login</Button>
+              </Link>
+              <Link href="/register" className="text-lg font-medium">
+                <Button>Register</Button>
+              </Link>
+            </>
           )}
         </div>
 

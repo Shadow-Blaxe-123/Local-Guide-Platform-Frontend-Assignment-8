@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import registerTourist from "@/services/auth/registerTourist";
+import Link from "next/link";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 
@@ -109,11 +110,19 @@ const RegisterForm = () => {
               <Button type="submit" disabled={ispending}>
                 {ispending ? "Registering..." : "Register"}
               </Button>
-              <FieldDescription className="px-6 text-center">
-                Already have an account?{" "}
-                <a href="/login" className="text-blue-600 hover:underline">
-                  Sign in
-                </a>
+              <FieldDescription className="px-6 text-center grid">
+                <p>
+                  Already have an account?{" "}
+                  <Link href="/login" className="text-blue-600 hover:underline">
+                    Sign in
+                  </Link>
+                </p>
+                <p>
+                  Or go back to{" "}
+                  <Link href="/" className="text-blue-600 hover:underline">
+                    Home
+                  </Link>
+                </p>
               </FieldDescription>
             </Field>
           </FieldGroup>

@@ -1,5 +1,5 @@
-function DashboardPage({}) {
+function TouristDashboardPage({}) {
   return <div>DashboardPage</div>;
 }
 
-export default DashboardPage;
+export default TouristDashboardPage;

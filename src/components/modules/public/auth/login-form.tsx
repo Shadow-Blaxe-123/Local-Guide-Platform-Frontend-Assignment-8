@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import loginUser from "@/services/auth/loginUser";
+import Link from "next/link";
 
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
@@ -76,11 +77,22 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
               {ispending ? "Logging in..." : "Login"}
             </Button>
 
-            <FieldDescription className="px-6 text-center">
-              Don&apos;t have an account?{" "}
-              <a href="/register" className="text-blue-600 hover:underline">
-                Register
-              </a>
+            <FieldDescription className="px-6 text-center flex flex-col">
+              <p>
+                Don&apos;t have an account?{" "}
+                <Link
+                  href="/register"
+                  className="text-blue-600 hover:underline"
+                >
+                  Register
+                </Link>
+              </p>
+              <p>
+                Or go back to{" "}
+                <Link href="/" className="text-blue-600 hover:underline">
+                  Home
+                </Link>
+              </p>
             </FieldDescription>
           </Field>
         </FieldGroup>

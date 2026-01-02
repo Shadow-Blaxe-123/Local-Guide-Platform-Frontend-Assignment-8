@@ -85,9 +85,6 @@ commented out so that it does not count towards the completed rate.
 
 ### 4.1 Navbar
 
-- **When Logged Out**:
-  - Login
-  - Register
 - **When Logged In (Tourist)**:
   - Logo (links to Home)
   - Explore Tours
