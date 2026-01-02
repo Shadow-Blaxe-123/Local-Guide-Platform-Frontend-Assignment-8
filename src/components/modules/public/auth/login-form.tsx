@@ -9,28 +9,29 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import loginUser from "@/lib/loginForm";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
+import { toast } from "sonner";
 
 const LoginForm = ({ redirect }: { redirect?: string }) => {
   const [state, formAction, ispending] = useActionState(loginUser, null);
 
-  //   const getFieldError = (fieldName: string) => {
-  //     if (state && state.errors) {
-  //       const error = state.errors.find((err: any) => err.field === fieldName);
-  //       return error.message;
-  //     } else {
-  //       return null;
-  //     }
-  //   };
-  //   useEffect(() => {
-  //     if (state && !state.success && state.message) {
-  //       toast.error(state.message);
-  //     }
-  //   }, [state]);
+  const getFieldError = (fieldName: string) => {
+    if (state && state.errors) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const error = state.errors.find((err: any) => err.field === fieldName);
+      return error.message;
+    } else {
+      return null;
+    }
+  };
+  useEffect(() => {
+    if (state && !state.success && state.message) {
+      toast.error(state.message);
+    }
+  }, [state]);
 
   return (
-    // <form action={formAction}>
-    <form>
+    <form action={formAction}>
       <input type="hidden" name="redirect" value={redirect} />
       <FieldGroup>
         <div className="grid grid-cols-1 gap-4">
@@ -43,11 +44,11 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
               type="email"
               placeholder="m@example.com"
             />
-            {/* {getFieldError("email") && (
+            {getFieldError("email") && (
               <FieldDescription className="text-red-600">
                 {getFieldError("email")}
               </FieldDescription>
-            )} */}
+            )}
           </Field>
 
           {/* Password */}
@@ -59,19 +60,17 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
               type="password"
               placeholder="Enter your password"
             />
-            {/* {getFieldError("password") && (
+            {getFieldError("password") && (
               <FieldDescription className="text-red-600">
                 {getFieldError("password")}
               </FieldDescription>
-            )} */}
+            )}
           </Field>
         </div>
         <FieldGroup className="mt-4">
           <Field>
-            {/* <Button type="submit" disabled={ispending}> */}
-            <Button type="submit">
-              {/* {ispending ? "Logging in..." : "Login"} */}
-              Login
+            <Button type="submit" disabled={ispending}>
+              {ispending ? "Logging in..." : "Login"}
             </Button>
 
             <FieldDescription className="px-6 text-center">

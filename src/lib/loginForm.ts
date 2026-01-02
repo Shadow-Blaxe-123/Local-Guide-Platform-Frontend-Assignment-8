@@ -5,6 +5,9 @@ import { parse } from "cookie";
 import z from "zod";
 import { setCookie } from "./tokenHandler";
 import { JwtPayload, verify } from "jsonwebtoken";
+import { getDefaultDashboardRoute, isValidRedirectForRole } from "./auth-utils";
+import { redirect } from "next/navigation";
+import { UserRole } from "@/types";
 // import { UserRole } from "@/types";
 
 const loginValidationSchema = z.object({
@@ -19,7 +22,7 @@ export default async function loginUser(
   formData: FormData
 ): Promise<any> {
   try {
-    // const redirectTo = formData.get("redirect");
+    const redirectTo = formData.get("redirect");
     let accessTokenObject: null | any = null;
     let refreshTokenObject: null | any = null;
     const loginData = {
@@ -40,7 +43,7 @@ export default async function loginUser(
       };
     }
 
-    const res = await fetch("http://localhost:5000/api/v1/auth/login", {
+    const res = await fetch(`${process.env.NEXT_BACKEND_URL}/auth/login`, {
       method: "POST",
       body: JSON.stringify(loginData),
       headers: {
@@ -94,22 +97,22 @@ export default async function loginUser(
     if (typeof verifiedToken === "string") {
       throw new Error("Invalid token");
     }
-    // const userRole: UserRole = verifiedToken.role;
+    const userRole: UserRole = verifiedToken.role;
 
     if (!result.success) {
       throw new Error(result.message || "Login failed");
     }
 
-    //     if (redirectTo) {
-    //       const requestedPath = redirectTo.toString();
-    //       if (isValidRedirectForRole(requestedPath, userRole)) {
-    //         redirect(`${requestedPath}?loggedIn=true`);
-    //       } else {
-    //         redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
-    //       }
-    //     } else {
-    //       redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
-    //     }
+    if (redirectTo) {
+      const requestedPath = redirectTo.toString();
+      if (isValidRedirectForRole(requestedPath, userRole)) {
+        redirect(`${requestedPath}?loggedIn=true`);
+      } else {
+        redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
+      }
+    } else {
+      redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
+    }
   } catch (error: any) {
     if (error?.digest?.startsWith("NEXT_REDIRECT")) {
       throw error;
