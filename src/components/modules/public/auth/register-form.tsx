@@ -18,7 +18,9 @@ const RegisterForm = () => {
   console.log("state:", state, "ispending: ", ispending);
   const getFieldError = (fieldName: string) => {
     if (state && state.errors) {
-      const error = state.errors.find((err: any) => err.field === fieldName);
+      const error = state.errors.find(
+        (err: any) => err.field === fieldName || err.field === "_form"
+      );
       if (error) {
         return error.message;
       } else {
@@ -28,6 +30,7 @@ const RegisterForm = () => {
       return null;
     }
   };
+  //Error check
   useEffect(() => {
     if (state && !state.success && state.message) {
       toast.error(state.message);
@@ -35,31 +38,38 @@ const RegisterForm = () => {
   }, [state]);
   return (
     <>
-      <form action={formAction}>
+      <form action={formAction} encType="multipart/form-data">
         <FieldGroup>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Name */}
             <Field>
               <FieldLabel htmlFor="name">Full Name</FieldLabel>
-              <Input id="name" name="name" type="text" placeholder="John Doe" />
+              <Input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="John Doe"
+                defaultValue={state?.values?.name}
+              />
               {getFieldError("name") && (
                 <FieldDescription className="text-red-600">
                   {getFieldError("name")}
                 </FieldDescription>
               )}
             </Field>
-            {/* Address */}
+            {/* Contact */}
             <Field>
-              <FieldLabel htmlFor="address">Address</FieldLabel>
+              <FieldLabel htmlFor="contactNumber">Contact Number</FieldLabel>
               <Input
-                id="address"
-                name="address"
+                id="contactNumber"
+                name="contactNumber"
                 type="text"
                 placeholder="123 Main St"
+                defaultValue={state?.values?.address}
               />
-              {getFieldError("address") && (
+              {getFieldError("contactNumber") && (
                 <FieldDescription className="text-red-600">
-                  {getFieldError("address")}
+                  {getFieldError("contactNumber")}
                 </FieldDescription>
               )}
             </Field>
@@ -71,6 +81,7 @@ const RegisterForm = () => {
                 name="email"
                 type="email"
                 placeholder="john.doe@me.com"
+                defaultValue={state?.values?.email}
               />
               {getFieldError("email") && (
                 <FieldDescription className="text-red-600">
@@ -103,6 +114,63 @@ const RegisterForm = () => {
                   {getFieldError("confirmPassword")}
                 </FieldDescription>
               )}
+            </Field>
+            {/* Bio */}
+            <Field className="md:col-span-2">
+              <FieldLabel htmlFor="bio">Bio</FieldLabel>
+              <Input
+                id="bio"
+                name="bio"
+                type="text"
+                placeholder="I am wanderer..."
+                defaultValue={state?.values?.bio}
+              />
+              {getFieldError("bio") && (
+                <FieldDescription className="text-red-600">
+                  {getFieldError("bio")}
+                </FieldDescription>
+              )}
+            </Field>
+            {/* Languages Spoken */}
+            <Field className="md:col-span-2">
+              <FieldLabel htmlFor="languagesSpoken">
+                Languages Spoken
+              </FieldLabel>
+              <Input
+                id="languagesSpoken"
+                name="languagesSpoken"
+                type="text"
+                placeholder="English, Bangla"
+                defaultValue={state?.values?.languagesSpoken}
+              />
+              {getFieldError("languagesSpoken") && (
+                <FieldDescription className="text-red-600">
+                  {getFieldError("languagesSpoken")}
+                </FieldDescription>
+              )}
+            </Field>
+            {/* Travel Preferences */}
+            <Field className="md:col-span-2">
+              <FieldLabel htmlFor="travelPreferences">
+                Travel Preferences
+              </FieldLabel>
+              <Input
+                id="travelPreferences"
+                name="travelPreferences"
+                type="text"
+                placeholder="Food, Cities"
+                defaultValue={state?.values?.travelPreferences}
+              />
+              {getFieldError("travelPreferences") && (
+                <FieldDescription className="text-red-600">
+                  {getFieldError("travelPreferences")}
+                </FieldDescription>
+              )}
+            </Field>
+            {/* pic */}
+            <Field className="md:col-span-2">
+              <FieldLabel htmlFor="file">Pic </FieldLabel>
+              <Input id="file" name="file" type="file" accept="image/*" />
             </Field>
           </div>
           <FieldGroup className="mt-4">

@@ -7,8 +7,11 @@ import loginUser from "./loginUser";
 const registerValidationSchema = z
   .object({
     name: z.string().min(1, { error: "Name is required" }),
-    address: z.string().min(1, { error: "Address is required" }),
+    contactNumber: z.string(),
     email: z.email({ error: "Invalid email address" }),
+    bio: z.string().optional(),
+    languagesSpoken: z.array(z.string()).optional(),
+    travelPreferences: z.array(z.string()).optional(),
     password: z
       .string()
       .min(6, { error: "Password must be at least 6 characters" }),
@@ -26,12 +29,33 @@ export default async function registerTourist(
   formData: FormData
 ): Promise<any> {
   try {
+    const rawLanguages = formData.get("languagesSpoken");
+    const languagesSpoken =
+      typeof rawLanguages === "string" && rawLanguages.trim() !== ""
+        ? rawLanguages
+            .split(",")
+            .map((lang) => lang.trim())
+            .filter(Boolean)
+        : [];
+    const rawTravelPreferences = formData.get("travelPreferences");
+    const travelPreferences =
+      typeof rawTravelPreferences === "string" &&
+      rawTravelPreferences.trim() !== ""
+        ? rawTravelPreferences
+            .split(",")
+            .map((lang) => lang.trim())
+            .filter(Boolean)
+        : [];
+
     const validationData = {
       name: formData.get("name"),
-      address: formData.get("address"),
+      contactNumber: formData.get("contactNumber"),
       email: formData.get("email"),
       password: formData.get("password"),
       confirmPassword: formData.get("confirmPassword"),
+      bio: formData.get("bio"),
+      languagesSpoken,
+      travelPreferences,
     };
     const validatedFields = registerValidationSchema.safeParse(validationData);
 
@@ -40,25 +64,33 @@ export default async function registerTourist(
         success: false,
         errors: validatedFields.error.issues.map((issue: any) => {
           return {
-            field: issue.path[0],
+            field: issue.path[0] ?? "_form",
             message: issue.message,
           };
         }),
+        values: Object.fromEntries(formData),
       };
     }
     const registerData = {
-      password: formData.get("password"),
-      patient: {
+      data: {
+        password: formData.get("password"),
         name: formData.get("name"),
-        address: formData.get("address"),
+        contactNumber: formData.get("contactNumber"),
         email: formData.get("email"),
+        bio: formData.get("bio"),
+        languagesSpoken,
+        travelPreferences,
       },
     };
     const newFormData = new FormData();
-    newFormData.append("data", JSON.stringify(registerData));
+    newFormData.append("data", JSON.stringify(registerData.data));
+    const file = formData.get("file");
+    if (file instanceof File && file.size > 0) {
+      newFormData.append("file", file);
+    }
 
     const res = await fetch(
-      "http://localhost:5000/api/v1/user/create-patient",
+      `${process.env.NEXT_BACKEND_URL}/user/create-tourist`,
       {
         method: "POST",
         body: newFormData,
