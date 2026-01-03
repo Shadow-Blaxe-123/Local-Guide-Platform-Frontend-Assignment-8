@@ -24,7 +24,7 @@ commented out so that it does not count towards the completed rate.
 ### 3.1 User Authentication & Roles
 
 - **Register / Login**:
-  - Email & Password
+  - Email & Password complete registration for guide different forms but same page
 - **Roles**:
   - **Tourist**: Can search tours and book guides.
   - **Guide**: Can create tour listings and accept bookings.
