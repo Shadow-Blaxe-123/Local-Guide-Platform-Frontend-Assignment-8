@@ -1,6 +1,6 @@
 # 🗺️ Local Guide Platform
 
-## Complete Rate ((270-231)+8)/270 * 100 = 17.4%
+## Complete Rate ((270-213)+8)/270 * 100 = 25%
 
 <!-- ## 1. Project Overview
 
@@ -37,7 +37,6 @@ commented out so that it does not count towards the completed rate.
 - **Guide Specifics**:
   - Expertise (e.g., History, Nightlife, Shopping).
   - Daily Rate (how much they charge per day).
-- **Tourist Specifics**: Travel preferences.
 
 ### 3.3 Tour Listing Management (CRUD)
 
@@ -126,26 +125,11 @@ commented out so that it does not count towards the completed rate.
 | 🗺️Interactive Map       | View tour routes or meeting points on Google/Mapbox |
 | 🏅Badges                | "Super Guide", "Newcomer", "Foodie Expert"          |
 
-## 6. Folder & API Structure
-
-### 🗂 Folder Structure
-
-```bash
-frontend/
- ├── app/
- │   ├── (auth)/...
- │   ├── (public)/explore, tours/[id]
- │   ├── (dashboard)/guide, tourist, admin
- │   ├── components/
- │   └── ...
-```
-
 ### 🌐 API Endpoints
 
 | Method | Endpoint                | Description                   |
 | :----- | :---------------------- | :---------------------------- |
 | POST   | `/api/auth/register`    | Register user (Tourist/Guide) |
-| POST   | `/api/auth/login`       | Login user                    |
 | GET    | `/api/users/:id`        | Get public profile            |
 | PATCH  | `/api/users/:id`        | Update user profile           |
 | GET    | `/api/listings`         | Search/Filter tours           |
@@ -222,8 +206,6 @@ Admin Credentials:
 Email: Your Admin Email
 Password: Your Admin Password
 ```
-
----
 
 ### ⏰ Deadline
 
