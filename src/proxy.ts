@@ -1,0 +1,81 @@
+import { JwtPayload, verify } from "jsonwebtoken";
+
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import {
+  getDefaultDashboardRoute,
+  getRouteOwner,
+  isAuthRoutes,
+} from "./lib/auth-utils";
+import { deleteCookie, getCookie } from "./lib/tokenHandler";
+import { UserRole } from "./types";
+
+// This function can be marked `async` if using `await` inside
+export async function proxy(request: NextRequest) {
+  const pathName = request.nextUrl.pathname;
+
+  const accessToken = (await getCookie("accessToken")) || null;
+
+  let userRole: UserRole | null = null;
+  if (accessToken) {
+    const verifiedToken: JwtPayload | string = verify(
+      accessToken,
+      process.env.JWT_ACCESS_TOKEN_SECRET as string
+    );
+    if (typeof verifiedToken === "string") {
+      await deleteCookie("accessToken");
+      await deleteCookie("refreshToken");
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+    userRole = verifiedToken.role;
+  }
+  const routeOwner = getRouteOwner(pathName);
+  const isAuth = isAuthRoutes(pathName);
+
+  if (accessToken && isAuth) {
+    return NextResponse.redirect(
+      new URL(getDefaultDashboardRoute(userRole as UserRole), request.url)
+    );
+  }
+  if (routeOwner === null) {
+    return NextResponse.next();
+  }
+  if (!accessToken) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("redirect", pathName);
+    return NextResponse.redirect(loginUrl);
+  }
+  if (routeOwner === "COMMON") {
+    return NextResponse.next();
+  }
+  if (
+    routeOwner === "ADMIN" ||
+    routeOwner === "GUIDE" ||
+    routeOwner === "TOURIST"
+  ) {
+    if (userRole !== routeOwner) {
+      return NextResponse.redirect(
+        new URL(getDefaultDashboardRoute(userRole as UserRole), request.url)
+      );
+    }
+  }
+
+  return NextResponse.next();
+}
+
+// Alternatively, you can use a default export:
+// export default function proxy(request: NextRequest) { ... }
+
+// See "Matching Paths" below to learn more
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.well-known).*)",
+  ],
+};
