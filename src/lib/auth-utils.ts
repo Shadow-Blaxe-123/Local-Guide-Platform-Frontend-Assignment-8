@@ -18,7 +18,7 @@ export const guideProtectedRoutes: RouteConfig = {
 };
 export const touristProtectedRoutes: RouteConfig = {
   exact: [],
-  patterns: [/^\/dashboard/],
+  patterns: [/^\/tourist/],
 };
 export const adminProtectedRoutes: RouteConfig = {
   exact: [],
@@ -65,7 +65,7 @@ export const getDefaultDashboardRoute = (role: UserRole): string => {
     return "/guide/dashboard";
   }
   if (role === "TOURIST") {
-    return "/dashboard";
+    return "/tourist/dashboard";
   }
   return "/";
 };
