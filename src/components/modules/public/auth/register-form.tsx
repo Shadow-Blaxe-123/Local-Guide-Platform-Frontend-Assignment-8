@@ -111,18 +111,18 @@ const RegisterForm = () => {
                 {ispending ? "Registering..." : "Register"}
               </Button>
               <FieldDescription className="px-6 text-center grid">
-                <p>
+                <span>
                   Already have an account?{" "}
                   <Link href="/login" className="text-blue-600 hover:underline">
                     Sign in
                   </Link>
-                </p>
-                <p>
+                </span>
+                <span>
                   Or go back to{" "}
                   <Link href="/" className="text-blue-600 hover:underline">
                     Home
                   </Link>
-                </p>
+                </span>
               </FieldDescription>
             </Field>
           </FieldGroup>

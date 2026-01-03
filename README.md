@@ -1,6 +1,6 @@
 # 🗺️ Local Guide Platform
 
-## Complete Rate ((270-231)+8)/270 * 100 = 4.4%
+## Complete Rate ((270-231)+8)/270 * 100 = 17.4%
 
 <!-- ## 1. Project Overview
 

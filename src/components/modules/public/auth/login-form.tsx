@@ -78,7 +78,7 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
             </Button>
 
             <FieldDescription className="px-6 text-center flex flex-col">
-              <p>
+              <span>
                 Don&apos;t have an account?{" "}
                 <Link
                   href="/register"
@@ -86,13 +86,13 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
                 >
                   Register
                 </Link>
-              </p>
-              <p>
+              </span>
+              <span>
                 Or go back to{" "}
                 <Link href="/" className="text-blue-600 hover:underline">
                   Home
                 </Link>
-              </p>
+              </span>
             </FieldDescription>
           </Field>
         </FieldGroup>
