@@ -79,7 +79,10 @@ const Navbar = async () => {
               <Link href="/login" className="text-lg font-medium">
                 <Button>Login</Button>
               </Link>
-              <Link href="/register" className="text-lg font-medium">
+              <Link
+                href="/register?role=tourist"
+                className="text-lg font-medium"
+              >
                 <Button>Register</Button>
               </Link>
             </>

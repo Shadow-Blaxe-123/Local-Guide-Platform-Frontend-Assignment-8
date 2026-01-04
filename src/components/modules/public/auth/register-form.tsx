@@ -8,13 +8,13 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import registerTourist from "@/services/auth/registerTourist";
+import registerUser from "@/services/auth/registerUser";
 import Link from "next/link";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 
-const RegisterForm = () => {
-  const [state, formAction, ispending] = useActionState(registerTourist, null);
+const RegisterForm = ({ role }: { role: "tourist" | "guide" }) => {
+  const [state, formAction, ispending] = useActionState(registerUser, null);
   console.log("state:", state, "ispending: ", ispending);
   const getFieldError = (fieldName: string) => {
     if (state && state.errors) {
@@ -38,9 +38,10 @@ const RegisterForm = () => {
   }, [state]);
   return (
     <>
-      <form action={formAction} encType="multipart/form-data">
+      <form action={formAction}>
         <FieldGroup>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="hidden" name="role" value={role} />
             {/* Name */}
             <Field>
               <FieldLabel htmlFor="name">Full Name</FieldLabel>
@@ -131,6 +132,7 @@ const RegisterForm = () => {
                 </FieldDescription>
               )}
             </Field>
+
             {/* Languages Spoken */}
             <Field className="md:col-span-2">
               <FieldLabel htmlFor="languagesSpoken">
@@ -150,23 +152,63 @@ const RegisterForm = () => {
               )}
             </Field>
             {/* Travel Preferences */}
-            <Field className="md:col-span-2">
-              <FieldLabel htmlFor="travelPreferences">
-                Travel Preferences
-              </FieldLabel>
-              <Input
-                id="travelPreferences"
-                name="travelPreferences"
-                type="text"
-                placeholder="Food, Cities"
-                defaultValue={state?.values?.travelPreferences}
-              />
-              {getFieldError("travelPreferences") && (
-                <FieldDescription className="text-red-600">
-                  {getFieldError("travelPreferences")}
-                </FieldDescription>
-              )}
-            </Field>
+            {role === "tourist" && (
+              <Field className="md:col-span-2">
+                <FieldLabel htmlFor="travelPreferences">
+                  Travel Preferences
+                </FieldLabel>
+                <Input
+                  id="travelPreferences"
+                  name="travelPreferences"
+                  type="text"
+                  placeholder="Food, Cities"
+                  defaultValue={state?.values?.travelPreferences}
+                />
+                {getFieldError("travelPreferences") && (
+                  <FieldDescription className="text-red-600">
+                    {getFieldError("travelPreferences")}
+                  </FieldDescription>
+                )}
+              </Field>
+            )}
+            {/* Guide Fields */}
+            {role === "guide" && (
+              <>
+                <Field>
+                  <FieldLabel htmlFor="dailyRate">Daily Rate</FieldLabel>
+                  <Input
+                    id="dailyRate"
+                    name="dailyRate"
+                    type="number"
+                    step="0.01"
+                    placeholder="150.00"
+                    defaultValue={state?.values?.dailyRate}
+                  />
+                  {getFieldError("dailyRate") && (
+                    <FieldDescription className="text-red-600">
+                      {getFieldError("dailyRate")}
+                    </FieldDescription>
+                  )}
+                </Field>
+
+                <Field>
+                  <FieldLabel htmlFor="expertise">Expertise</FieldLabel>
+                  <Input
+                    id="expertise"
+                    name="expertise"
+                    type="text"
+                    placeholder="History, Nature, Adventure"
+                    defaultValue={state?.values?.expertise}
+                  />
+                  {getFieldError("expertise") && (
+                    <FieldDescription className="text-red-600">
+                      {getFieldError("expertise")}
+                    </FieldDescription>
+                  )}
+                </Field>
+              </>
+            )}
+
             {/* pic */}
             <Field className="md:col-span-2">
               <FieldLabel htmlFor="file">Pic </FieldLabel>
