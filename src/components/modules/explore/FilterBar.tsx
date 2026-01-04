@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 
 function FilterBar() {
+  // TODO: Implement state and handlers for filters
   const [city, setCity] = useState("");
   const [category, setCategory] = useState<string | undefined>(undefined);
   const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
