@@ -13,8 +13,6 @@ import { getCookie } from "@/lib/tokenHandler";
 import LogoutButton from "./auth/LogoutButton";
 import { getUserInfo } from "@/services/auth/getUserinfo";
 
-// import LogoutButton from "./LogoutButton";1
-
 const Navbar = async () => {
   const accessToken = await getCookie("accessToken");
 
@@ -22,24 +20,26 @@ const Navbar = async () => {
 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "#", label: "About Us" },
+    { href: "#about", label: "About Us" },
   ];
 
   if (user?.role === "TOURIST") {
     navItems.push(
       { href: "#", label: "Explore Tours" },
       { href: "#", label: "My Bookings" },
+      { href: "/tourist/dashboard", label: "Dashboard" },
+
       { href: "#", label: "Profile" }
     );
   } else if (user?.role === "GUIDE") {
     navItems.push(
       { href: "#", label: "Explore Tours" },
-      { href: "#", label: "Dashboard" },
+      { href: "/guide/dashboard", label: "Dashboard" },
       { href: "#", label: "Profile" }
     );
   } else if (user?.role === "ADMIN") {
     navItems.push(
-      { href: "#", label: "Dashboard" },
+      { href: "/admin/dashboard", label: "Dashboard" },
       { href: "#", label: "Manage Users" },
       { href: "#", label: "Manage Listings" },
       { href: "#", label: "Profile" }
@@ -47,7 +47,7 @@ const Navbar = async () => {
   } else {
     navItems.push(
       { href: "#", label: "Explore Tours" },
-      { href: "#", label: "Become a Guide" }
+      { href: "#becomeAGuide", label: "Become a Guide" }
     );
   }
 

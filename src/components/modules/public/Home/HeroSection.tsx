@@ -20,7 +20,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative w-full bg-linear-to-b from-slate-50 to-white">
+    <section className="relative w-full h-full bg-linear-to-b from-violet-400 to-white flex items-center justify-center">
       <div className="mx-auto max-w-7xl px-4 py-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
           {/* Left Content */}
