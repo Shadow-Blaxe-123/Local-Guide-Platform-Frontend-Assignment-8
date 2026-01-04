@@ -15,7 +15,7 @@ export interface ApiResponse<T> {
     limit: number;
     total: number;
   };
-  data: T | T[];
+  data: T;
 }
 
 export interface Review {
