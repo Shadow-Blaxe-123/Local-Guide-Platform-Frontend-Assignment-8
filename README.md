@@ -1,6 +1,6 @@
 # 🗺️ Local Guide Platform
 
-## Complete Rate ((270-213)+8)/270 * 100 = 25%
+## Complete Rate ((270-202)+8)/270 * 100 = 28.1%
 
 <!-- ## 1. Project Overview
 
@@ -23,20 +23,10 @@ commented out so that it does not count towards the completed rate.
 
 ### 3.1 User Authentication & Roles
 
-- **Register / Login**:
-  - Email & Password complete registration for guide different forms but same page
 - **Roles**:
   - **Tourist**: Can search tours and book guides.
   - **Guide**: Can create tour listings and accept bookings.
   - **Admin**: Can manage users, tour listings and bookings.
-- **Security**: JWT-based Auth, secure password hashing.
-
-### 3.2 User Profile Management (CRUD)
-
-- **Common Fields**: Name, Profile Pic, Bio, Languages Spoken.
-- **Guide Specifics**:
-  - Expertise (e.g., History, Nightlife, Shopping).
-  - Daily Rate (how much they charge per day).
 
 ### 3.3 Tour Listing Management (CRUD)
 
@@ -127,18 +117,17 @@ commented out so that it does not count towards the completed rate.
 
 ### 🌐 API Endpoints
 
-| Method | Endpoint                | Description                   |
-| :----- | :---------------------- | :---------------------------- |
-| POST   | `/api/auth/register`    | Register user (Tourist/Guide) |
-| GET    | `/api/users/:id`        | Get public profile            |
-| PATCH  | `/api/users/:id`        | Update user profile           |
-| GET    | `/api/listings`         | Search/Filter tours           |
-| PATCH  | `/api/listings/:id`     | Update tour listing           |
-| DELETE | `/api/listings/:id`     | Delete tour listing           |
-| POST   | `/api/bookings`         | Request a booking             |
-| PATCH  | `/api/bookings/:id`     | Accept/Reject booking         |
-| POST   | `/api/reviews`          | Submit a review               |
-| POST   | `/api/payments/booking` | Pay for booking               |
+| Method | Endpoint                | Description           |
+| :----- | :---------------------- | :-------------------- |
+| GET    | `/api/users/:id`        | Get public profile    |
+| PATCH  | `/api/users/:id`        | Update user profile   |
+| GET    | `/api/listings`         | Search/Filter tours   |
+| PATCH  | `/api/listings/:id`     | Update tour listing   |
+| DELETE | `/api/listings/:id`     | Delete tour listing   |
+| POST   | `/api/bookings`         | Request a booking     |
+| PATCH  | `/api/bookings/:id`     | Accept/Reject booking |
+| POST   | `/api/reviews`          | Submit a review       |
+| POST   | `/api/payments/booking` | Pay for booking       |
 
 ## Assignment 8 - Batch 5
 
