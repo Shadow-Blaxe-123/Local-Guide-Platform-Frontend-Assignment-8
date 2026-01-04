@@ -25,7 +25,7 @@ const Navbar = async () => {
 
   if (user?.role === "TOURIST") {
     navItems.push(
-      { href: "#", label: "Explore Tours" },
+      { href: "/explore", label: "Explore Tours" },
       { href: "#", label: "My Bookings" },
       { href: "/tourist/dashboard", label: "Dashboard" },
 
@@ -33,7 +33,6 @@ const Navbar = async () => {
     );
   } else if (user?.role === "GUIDE") {
     navItems.push(
-      { href: "#", label: "Explore Tours" },
       { href: "/guide/dashboard", label: "Dashboard" },
       { href: "#", label: "Profile" }
     );
@@ -46,7 +45,7 @@ const Navbar = async () => {
     );
   } else {
     navItems.push(
-      { href: "#", label: "Explore Tours" },
+      { href: "/explore", label: "Explore Tours" },
       { href: "#becomeAGuide", label: "Become a Guide" }
     );
   }

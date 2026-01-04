@@ -1,6 +1,6 @@
 # 🗺️ Local Guide Platform
 
-## Complete Rate ((270-202)+8)/270 * 100 = 28.1%
+## Complete Rate ((270-188)+8)/270 * 100 = 28.1%
 
 <!-- ## 1. Project Overview
 
@@ -70,15 +70,7 @@ commented out so that it does not count towards the completed rate.
 
 ### 4.2 Authentication Pages
 
-- **`/register`**: Sign up with role selection (Tourist/Guide). Admin accounts are created separately.
-
-### 4.3 Home / Landing Page (`/`)
-
-- Hero search bar: "Where are you going?"
-- Featured cities and top-rated guides.
-- "Become a Guide" CTA.
-  
-> **Note:** Must have a minimum of 6 sections on the home page. Add other necessary sections as needed (e.g., How It Works, Popular Destinations, Top-Rated Guides, Testimonials/Reviews, Why Choose Us, Categories/Tour Types).
+- **`/register`** Admin accounts are created separately.
 
 ### 4.4 Profile Page (`/profile/[id]`)
 
@@ -110,7 +102,6 @@ commented out so that it does not count towards the completed rate.
 ## 5. Optional Features
 
 | Feature                | Description                                         |
-
 | 📅Availability Calendar | Guides set specific available dates/times           |
 | 🗺️Interactive Map       | View tour routes or meeting points on Google/Mapbox |
 | 🏅Badges                | "Super Guide", "Newcomer", "Foodie Expert"          |
@@ -134,10 +125,6 @@ commented out so that it does not count towards the completed rate.
 ## Mandatory Requirements (Critical)
 
 **Failure to meet the following requirements will result in ZERO marks.**
-
-### 1. Home Page Structure
-
-- The Home Page must contain a **minimum of 6 distinct sections**.
 
 ### 2. Error Handling
 

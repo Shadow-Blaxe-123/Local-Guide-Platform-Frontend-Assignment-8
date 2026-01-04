@@ -50,6 +50,8 @@ export interface Tour {
   isDeleted?: boolean;
   createdAt?: string;
   updatedAt?: string;
+  guide?: Guide;
+  reviews?: Review[];
 }
 
 export interface Guide {
