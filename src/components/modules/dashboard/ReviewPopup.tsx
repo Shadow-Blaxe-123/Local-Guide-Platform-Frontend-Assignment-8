@@ -76,7 +76,7 @@ export default function ReviewDialog({
           variant="default"
           className="bg-lime-700 font-black outline-4"
         >
-          {canReview ? "Write Review" : "Review Locked"}
+          {canReview ? "Write Review" : "Complete Tour to Review"}
         </Button>
       </DialogTrigger>
 

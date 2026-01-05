@@ -53,6 +53,10 @@ export async function AppSidebar({
         url: "/guide/bookings",
       },
       {
+        title: "My Tours",
+        url: "/guide/tours",
+      },
+      {
         title: "Profile",
         url: "/profile",
       }

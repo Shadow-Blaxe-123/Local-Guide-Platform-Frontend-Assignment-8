@@ -1,22 +1,18 @@
 # 🗺️ Local Guide Platform
 
-## Complete Rate ((270-172)+8)/270 * 100 = 39.3%
+## Complete Rate ((270-129)+8)/270 * 100 = 39.3%
 
 <!-- ## 1. Project Overview
 
-Local Guide Platform connects travelers with passionate local experts who can offer authentic, personalized experiences. Unlike generic tour agencies, this platform empowers individuals to share their city’s hidden gems, culture and stories. Travelers can find guides who match their interests whether for a food crawl, a photography walk or a historical tour and explore a destination like a local.
+Guidelyy connects travelers with passionate local experts who can offer authentic, personalized experiences. Unlike generic tour agencies, this platform empowers individuals to share their city’s hidden gems, culture and stories. Travelers can find guides who match their interests whether for a food crawl, a photography walk or a historical tour and explore a destination like a local.
 
 This project democratizes travel guiding, allowing locals to monetize their knowledge and travelers to access unique, off-the-beaten-path experiences. 
 
-commented out so that it does not count towards the completed rate.
 -->
 
 ## 2. Objectives
 
-- Build a platform connecting travelers with local guides.
 - Enable guides to list services/tours and travelers to book them.
-- Provide detailed profiles with reviews and verification to ensure trust.
-- Implement a secure booking workflow.
 
 ## 3. Core Features Breakdown
 
@@ -43,19 +39,9 @@ commented out so that it does not count towards the completed rate.
 - **Booking Workflow**:
   - Guide accepts or declines.
 
-### 3.6 Review & Rating System
-
-- **Post-Tour**:
-  - **Tourist**: Can rate and review guides after the tour.
-
 ### 4.2 Authentication Pages
 
 - **`/register`** Admin accounts are created separately.
-
-### 4.4 Profile Page (`/profile/[id]`)
-
-- **Guide View**: Bio, Languages, Stats (Tours given, Rating), Active Listings, Reviews.
-- **Tourist View**: Basic info, Reviews written.
 
 ### 4.5 Dashboard (`/dashboard`)
 
@@ -67,23 +53,13 @@ commented out so that it does not count towards the completed rate.
 - List of created tours.
 - **Add/Edit Page**: Form to input tour details, upload photos, set tour price.
 
-## 5. Optional Features
-
-| Feature                | Description                                         |
-| 🏅Badges                | "Super Guide", "Newcomer", "Foodie Expert"          |
-
 ### 🌐 API Endpoints
 
-| Method | Endpoint                | Description           |
-| :----- | :---------------------- | :-------------------- |
-| GET    | `/api/users/:id`        | Get public profile    |
-| PATCH  | `/api/users/:id`        | Update user profile   |
-| PATCH  | `/api/listings/:id`     | Update tour listing   |
-| DELETE | `/api/listings/:id`     | Delete tour listing   |
-| POST   | `/api/bookings`         | Request a booking     |
-| PATCH  | `/api/bookings/:id`     | Accept/Reject booking |
-| POST   | `/api/reviews`          | Submit a review       |
-| POST   | `/api/payments/booking` | Pay for booking       |
+| Method | Endpoint            | Description           |
+| :----- | :------------------ | :-------------------- |
+| PATCH  | `/api/listings/:id` | Update tour listing   |
+| DELETE | `/api/listings/:id` | Delete tour listing   |
+| PATCH  | `/api/bookings/:id` | Accept/Reject booking |
 
 ## Assignment 8 - Batch 5
 
@@ -100,9 +76,6 @@ commented out so that it does not count towards the completed rate.
 
 ## 🛠️ Technology Stack
 
-| Category       | Technologies                                    |
-| :------------- | :---------------------------------------------- |
-| **Payment**    | SSLCommerz / Stripe / Any other payment gateway |
 | **Deployment** | Vercel, Render, Railway                         |
 
 ---
