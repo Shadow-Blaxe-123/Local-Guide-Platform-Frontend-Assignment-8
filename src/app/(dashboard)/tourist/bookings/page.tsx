@@ -1,12 +1,11 @@
-import MyBookings from "@/components/modules/bookings/GetAllbookings";
+import AllBookingsCard from "@/components/modules/dashboard/AllBookingsCard";
 import getAllBookings from "@/services/dashboard/getAllBookings";
-import React from "react";
 
 async function TouristBookingsPage() {
   const data = await getAllBookings();
   return (
     <div>
-      <MyBookings bookings={data.data} />
+      <AllBookingsCard bookings={data.data} />
     </div>
   );
 }

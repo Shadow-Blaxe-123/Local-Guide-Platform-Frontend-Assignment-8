@@ -7,7 +7,11 @@ import {
 } from "@/components/ui/card";
 import { Booking } from "@/types/tour";
 
-export default function MyBookings({ bookings }: { bookings?: Booking[] }) {
+export default function AllBookingsCard({
+  bookings,
+}: {
+  bookings?: Booking[];
+}) {
   if (!bookings) {
     throw new Error("Bookings data is required");
   }

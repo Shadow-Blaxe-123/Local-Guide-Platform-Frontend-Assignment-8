@@ -26,7 +26,7 @@ const Navbar = async () => {
   if (user?.role === "TOURIST") {
     navItems.push(
       { href: "/explore", label: "Explore Tours" },
-      { href: "/tourist/dashboard/bookings", label: "My Bookings" },
+      { href: "/tourist/bookings", label: "My Bookings" },
       { href: "/tourist/dashboard", label: "Dashboard" },
 
       { href: "/profile", label: "Profile" }
