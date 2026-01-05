@@ -40,7 +40,7 @@ const Navbar = async () => {
     navItems.push(
       { href: "/admin/dashboard", label: "Dashboard" },
       { href: "/admin/users", label: "Manage Users" },
-      { href: "/admin/tours", label: "Manage Listings" },
+      { href: "/admin/tours", label: "Manage Tours" },
       { href: "/profile", label: "Profile" }
     );
   } else {

@@ -69,7 +69,7 @@ export async function AppSidebar({
         url: "/admin/dashboard",
       },
       {
-        title: "Tours",
+        title: "Manage Tours",
         url: "/admin/tours",
       },
       {
