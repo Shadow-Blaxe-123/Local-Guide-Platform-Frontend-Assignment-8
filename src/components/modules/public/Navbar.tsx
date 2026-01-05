@@ -26,22 +26,22 @@ const Navbar = async () => {
   if (user?.role === "TOURIST") {
     navItems.push(
       { href: "/explore", label: "Explore Tours" },
-      { href: "#", label: "My Bookings" },
+      { href: "/tourist/dashboard/bookings", label: "My Bookings" },
       { href: "/tourist/dashboard", label: "Dashboard" },
 
-      { href: "#", label: "Profile" }
+      { href: "/profile", label: "Profile" }
     );
   } else if (user?.role === "GUIDE") {
     navItems.push(
       { href: "/guide/dashboard", label: "Dashboard" },
-      { href: "#", label: "Profile" }
+      { href: "/profile", label: "Profile" }
     );
   } else if (user?.role === "ADMIN") {
     navItems.push(
       { href: "/admin/dashboard", label: "Dashboard" },
-      { href: "#", label: "Manage Users" },
-      { href: "#", label: "Manage Listings" },
-      { href: "#", label: "Profile" }
+      { href: "/admin/users", label: "Manage Users" },
+      { href: "/admin/tours", label: "Manage Listings" },
+      { href: "/profile", label: "Profile" }
     );
   } else {
     navItems.push(

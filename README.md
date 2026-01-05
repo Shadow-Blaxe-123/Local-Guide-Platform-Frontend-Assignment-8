@@ -23,7 +23,6 @@ commented out so that it does not count towards the completed rate.
 ### 3.1 User Authentication & Roles
 
 - **Roles**:
-  - **Tourist**: Can search tours and book guides.
   - **Guide**: Can create tour listings and accept bookings.
   - **Admin**: Can manage users, tour listings and bookings.
 
@@ -42,22 +41,12 @@ commented out so that it does not count towards the completed rate.
 ### 3.5 Booking System
 
 - **Booking Workflow**:
-  - Traveler requests a date/time.
   - Guide accepts or declines.
-  - Status updates: Pending, Confirmed, Completed, Cancelled.
 
 ### 3.6 Review & Rating System
 
 - **Post-Tour**:
   - **Tourist**: Can rate and review guides after the tour.
-
-### 3.7 Payment Integration
-
-- **Booking Payments**:
-  - Tourist can pay for the tour.
-  - Guide can receive payment after the tour.
-  - Secure payment processing for tour bookings.
-  - Integration with Stripe / SSLCommerz / any other payment gateway.
 
 ### 4.2 Authentication Pages
 
@@ -71,17 +60,13 @@ commented out so that it does not count towards the completed rate.
 ### 4.5 Dashboard (`/dashboard`)
 
 - **For Guides**: Upcoming bookings, Pending requests, My Listings.
-- **For Tourists**: My Trips (Upcoming/Past), Wishlist.
+- **For Tourists**: My Trips (Upcoming/Past)
 - **For Admin**: User Management, Listing Management, Booking Management.
 
 ### 4.6 Listing Management (`/dashboard/listings`)
 
 - List of created tours.
 - **Add/Edit Page**: Form to input tour details, upload photos, set tour price.
-
-### 4.8 Listing Details Page (`/tours/[id]`)
-
-- **Booking Widget**: Select Date/Time -> "Request to Book"
 
 ## 5. Optional Features
 
