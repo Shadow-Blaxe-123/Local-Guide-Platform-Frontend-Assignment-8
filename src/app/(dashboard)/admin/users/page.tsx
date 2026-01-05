@@ -1,3 +1,4 @@
+import CreateAdminDialog from "@/components/modules/dashboard/CreateAdminDialog";
 import DeleteButton from "@/components/modules/dashboard/DeleteButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -13,6 +14,9 @@ async function ManageUsersPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Manage Users</h1>
         <p className="text-muted-foreground mt-1">Overview of all the users</p>
+      </div>
+      <div>
+        <CreateAdminDialog />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {users.map((user) => (

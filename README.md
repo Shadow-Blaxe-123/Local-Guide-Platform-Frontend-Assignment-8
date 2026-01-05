@@ -10,8 +10,6 @@ This project democratizes travel guiding, allowing locals to monetize their know
 
 -->
 
-## 2. Objectives
-
 - Enable guides to list services/tours and travelers to book them.
 
 ## 3. Core Features Breakdown
@@ -20,7 +18,7 @@ This project democratizes travel guiding, allowing locals to monetize their know
 
 - **Roles**:
   - **Guide**: Can create tour listings and accept bookings.
-  - **Admin**: Can manage users, tour listings and bookings.
+  - **Admin**: tour listings and bookings.
 
 ### 3.3 Tour Listing Management (CRUD)
 
