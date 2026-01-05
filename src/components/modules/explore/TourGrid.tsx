@@ -13,10 +13,11 @@ import { Tour, UserRole } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import DeleteButton from "../dashboard/DeleteButton";
+import EditTourDialog from "../dashboard/EditTours";
 
 function TourGrid({ tours, role }: { tours: Tour[]; role: UserRole }) {
   const defaultImage = "/no-photo.jpg";
-  const canDelete = role === "TOURIST" || role === "ADMIN";
+  const canDelete = role === "GUIDE" || role === "ADMIN";
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -42,6 +43,7 @@ function TourGrid({ tours, role }: { tours: Tour[]; role: UserRole }) {
               key={tour.id}
               className="rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
             >
+              {role === "GUIDE" && <EditTourDialog tour={tour} />}
               {/* Image Carousel */}
               <div className="relative">
                 <Carousel className="w-full">
