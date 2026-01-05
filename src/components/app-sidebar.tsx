@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { getUserInfo } from "@/services/auth/getUserinfo";
+import LogoutButton from "./modules/public/auth/LogoutButton";
 
 interface NavItem {
   title: string;
@@ -100,7 +101,9 @@ export async function AppSidebar({
       <SidebarContent>
         <NavMain items={navMain} />
       </SidebarContent>
-      <SidebarFooter></SidebarFooter>
+      <SidebarFooter>
+        <LogoutButton />
+      </SidebarFooter>
     </Sidebar>
   );
 }

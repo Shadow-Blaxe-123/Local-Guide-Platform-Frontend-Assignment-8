@@ -60,7 +60,6 @@ commented out so that it does not count towards the completed rate.
 ### 4.5 Dashboard (`/dashboard`)
 
 - **For Guides**: Upcoming bookings, Pending requests, My Listings.
-- **For Tourists**: My Trips (Upcoming/Past)
 - **For Admin**: User Management, Listing Management, Booking Management.
 
 ### 4.6 Listing Management (`/dashboard/listings`)
