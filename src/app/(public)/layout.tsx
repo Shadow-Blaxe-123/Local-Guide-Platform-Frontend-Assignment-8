@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import Footer from "@/components/modules/public/Footer";
 import Navbar from "@/components/modules/public/Navbar";
 import React from "react";

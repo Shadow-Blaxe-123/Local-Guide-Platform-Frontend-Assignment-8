@@ -1,8 +1,8 @@
+export const dynamic = "force-dynamic";
 import AllBookingsCard from "@/components/modules/dashboard/AllBookingsCard";
 import DeleteButton from "@/components/modules/dashboard/DeleteButton";
 import getAllBookings from "@/services/dashboard/getAllBookings";
 import { Booking } from "@/types/tour";
-import React from "react";
 
 async function BookingManagement() {
   const data = await getAllBookings();

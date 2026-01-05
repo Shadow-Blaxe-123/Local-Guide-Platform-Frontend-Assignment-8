@@ -1,7 +1,7 @@
+export const dynamic = "force-dynamic";
 import StatCard from "@/components/modules/dashboard/StatCard";
 import getMetaData from "@/services/dashboard/getMetaData";
 import { AdminMetaData } from "@/types/MetaData";
-import React from "react";
 
 async function AdminDashboardPage() {
   const res = await getMetaData();

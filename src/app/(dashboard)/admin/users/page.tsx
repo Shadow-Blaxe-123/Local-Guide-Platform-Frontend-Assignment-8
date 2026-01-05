@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import CreateAdminDialog from "@/components/modules/dashboard/CreateAdminDialog";
 import DeleteButton from "@/components/modules/dashboard/DeleteButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";

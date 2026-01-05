@@ -1,6 +1,6 @@
+export const dynamic = "force-dynamic";
 import TourGrid from "@/components/modules/explore/TourGrid";
 import { getAllTours } from "@/services/public/getAllTours";
-import React from "react";
 
 async function AdminTourPage() {
   const data = await getAllTours("");
