@@ -1,11 +1,5 @@
-import MyBookings from "@/components/modules/bookings/GetAllbookings";
-
 function TouristDashboardPage({}) {
-  return (
-    <div>
-      <MyBookings />
-    </div>
-  );
+  return <div>Dashboard</div>;
 }
 
 export default TouristDashboardPage;

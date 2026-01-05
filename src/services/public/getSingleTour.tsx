@@ -11,6 +11,7 @@ export async function getSingleTour(id: string): Promise<ApiResponse<Tour>> {
         "Content-Type": "application/json",
       },
       cache: "no-store",
+      credentials: "include",
     }
   );
   const data = await response.json();

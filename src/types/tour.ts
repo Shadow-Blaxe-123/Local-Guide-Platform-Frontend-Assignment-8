@@ -1,3 +1,5 @@
+import { Guide, Tour, Tourist } from ".";
+
 export type UserStatus = "ACTIVE" | "INACTIVE" | "DELETED";
 
 export type TourStatus = "ACTIVE" | "INACTIVE";
@@ -17,8 +19,11 @@ export type PaymentStatus = "PENDING" | "COMPLETED" | "CANCELLED" | "REFUNDED";
 export interface Booking {
   id: string;
   tourId: string;
+  tour: Tour;
   touristId: string;
+  tourist: Tourist;
   guideId: string;
+  guide: Guide;
   status: BookingStatus;
   scheduledAt: string;
   price: number;

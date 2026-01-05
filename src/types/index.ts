@@ -23,6 +23,7 @@ export interface Review {
   tourId?: string;
   touristId?: string;
   guideId?: string;
+
   rating?: number;
   comment?: string;
   createdAt?: string;
@@ -57,6 +58,7 @@ export interface Tour {
 export interface Guide {
   id?: string;
   userId?: string;
+  user?: User;
   expertise?: string[];
   dailyRate?: number;
   earnings?: number;
@@ -88,4 +90,6 @@ export interface User {
   isDeleted?: boolean;
   createdAt?: string;
   updatedAt?: string;
+  guide?: Guide;
+  tourist?: Tourist;
 }

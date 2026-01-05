@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -8,62 +5,14 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { toast } from "sonner";
+import { Booking } from "@/types/tour";
 
-interface Booking {
-  id: string;
-  status: string;
-  scheduledAt: string;
-  price: number;
-  paymentStatus: string;
-  guide: {
-    user: { name: string; pic?: string | null; role: string };
-    expertise?: string[];
-  };
-  tourist: {
-    user: { name: string; pic?: string | null; role: string };
-  };
-  tour: {
-    title: string;
-    description: string;
-    city: string;
-    country: string;
-    duration: number;
-  };
-}
+export default function MyBookings({ bookings }: { bookings?: Booking[] }) {
+  if (!bookings) {
+    throw new Error("Bookings data is required");
+  }
 
-export default function MyBookings() {
-  const [bookings, setBookings] = useState<Booking[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchBookings() {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/booking/all`,
-          {
-            method: "GET",
-            credentials: "include",
-          }
-        ); // replace with your real API
-        const data = await res.json();
-        if (data.success) {
-          setBookings(data.data);
-        } else {
-          toast.error("Failed to fetch bookings.");
-        }
-      } catch (err) {
-        console.error(err);
-        toast.error("Something went wrong while fetching bookings.");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchBookings();
-  }, []);
-
-  if (loading) return <p className="text-center mt-8">Loading bookings...</p>;
-  if (!bookings.length)
+  if (bookings.length === 0)
     return <p className="text-center mt-8">No bookings found.</p>;
 
   return (
@@ -96,13 +45,13 @@ export default function MyBookings() {
                 <strong>Payment:</strong> {booking.paymentStatus}
               </p>
               <p>
-                <strong>Guide:</strong> {booking.guide.user.name}{" "}
+                <strong>Guide:</strong> {booking.guide.user?.name}{" "}
                 {booking.guide.expertise?.length
                   ? `(${booking.guide.expertise.join(", ")})`
                   : ""}
               </p>
               <p>
-                <strong>Tourist:</strong> {booking.tourist.user.name}
+                <strong>Tourist:</strong> {booking.tourist.user?.name}
               </p>
             </CardContent>
           </Card>
