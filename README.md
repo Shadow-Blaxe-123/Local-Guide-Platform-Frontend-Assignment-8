@@ -1,6 +1,6 @@
 # 🗺️ Local Guide Platform
 
-## Complete Rate ((270-188)+8)/270 * 100 = 28.1%
+## Complete Rate ((270-172)+8)/270 * 100 = 39.3%
 
 <!-- ## 1. Project Overview
 
@@ -39,14 +39,6 @@ commented out so that it does not count towards the completed rate.
   - Max Group Size.
   - Images (Cloudinary/ImgBB).
 - **Manage**: Guides can edit or deactivate their listings.
-
-### 3.4 Search & Matching System
-
-- **Search Filters**:
-  - Destination / City.
-  - Language (e.g., "English", "Spanish").
-  - Category (Food, Art, Adventure).
-  - Price Range.
 
 ### 3.5 Booking System
 
@@ -88,11 +80,6 @@ commented out so that it does not count towards the completed rate.
 - List of created tours.
 - **Add/Edit Page**: Form to input tour details, upload photos, set tour price.
 
-### 4.7 Search / Explore Page (`/explore`)
-
-- Sidebar with filters (Date, Price, Category).
-- Main area showing results.
-
 ### 4.8 Listing Details Page (`/tours/[id]`)
 
 - Full tour description, photos, host info.
@@ -102,8 +89,6 @@ commented out so that it does not count towards the completed rate.
 ## 5. Optional Features
 
 | Feature                | Description                                         |
-| 📅Availability Calendar | Guides set specific available dates/times           |
-| 🗺️Interactive Map       | View tour routes or meeting points on Google/Mapbox |
 | 🏅Badges                | "Super Guide", "Newcomer", "Foodie Expert"          |
 
 ### 🌐 API Endpoints
@@ -112,7 +97,6 @@ commented out so that it does not count towards the completed rate.
 | :----- | :---------------------- | :-------------------- |
 | GET    | `/api/users/:id`        | Get public profile    |
 | PATCH  | `/api/users/:id`        | Update user profile   |
-| GET    | `/api/listings`         | Search/Filter tours   |
 | PATCH  | `/api/listings/:id`     | Update tour listing   |
 | DELETE | `/api/listings/:id`     | Delete tour listing   |
 | POST   | `/api/bookings`         | Request a booking     |

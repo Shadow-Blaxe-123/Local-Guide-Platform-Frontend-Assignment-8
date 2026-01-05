@@ -29,8 +29,17 @@ export default async function ExploreToursPage({
       <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">
         Explore Tours
       </h1>
-      <FilterBar />
-      <TourGrid tours={data.data} />
+      <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8">
+        {/* Sidebar */}
+        <aside className="md:sticky md:top-24 h-fit">
+          <FilterBar />
+        </aside>
+
+        {/* Content */}
+        <main>
+          <TourGrid tours={data.data} />
+        </main>
+      </div>
     </div>
   );
 }

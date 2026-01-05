@@ -35,7 +35,7 @@ function FilterBar() {
     router.push(`/explore?${qs.toString()}`);
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-10">
+    <div className="grid grid-cols-1 gap-4 mb-10">
       <Input
         placeholder="City"
         value={city}
