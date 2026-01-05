@@ -2,10 +2,9 @@
 
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Clock, Users, Globe } from "lucide-react";
-import { Review, Tour } from "@/types";
+import { Review, Tour, UserInfo } from "@/types";
 import {
   Carousel,
   CarouselContent,
@@ -13,10 +12,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Link from "next/link";
+import BookingWidget from "./BookingWidget";
 
 // This component expects `tour` to be passed from the page (server component)
-export default function TourDetail({ tour }: { tour: Tour }) {
+export default function TourDetail({
+  tour,
+  user,
+}: {
+  tour: Tour;
+  user: UserInfo | null;
+}) {
   console.log(tour);
   const defaultImage = "/no-photo.jpg";
   const images =
@@ -47,11 +52,7 @@ export default function TourDetail({ tour }: { tour: Tour }) {
 
           <div className="pt-6 flex items-center gap-6">
             <span className="text-3xl font-bold">${tour.price}</span>
-            <Link
-              href={`/booking?${new URLSearchParams({ tourId: tour.id! })}`}
-            >
-              <Button size="lg">Book This Tour</Button>
-            </Link>
+            <BookingWidget tourId={tour.id as string} user={user} />
           </div>
         </div>
 

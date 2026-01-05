@@ -47,13 +47,16 @@ export default async function loginUser(
       };
     }
 
-    const res = await fetch(`${process.env.NEXT_BACKEND_URL}/auth/login`, {
-      method: "POST",
-      body: JSON.stringify(loginData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
+      {
+        method: "POST",
+        body: JSON.stringify(loginData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const result = await res.json();
     console.log("res:", res);
 

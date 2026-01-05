@@ -128,10 +128,13 @@ export default async function registerUser(
       newFormData.append("file", file);
     }
 
-    const res = await fetch(`${process.env.NEXT_BACKEND_URL}${endpoint}`, {
-      method: "POST",
-      body: newFormData,
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}${endpoint}`,
+      {
+        method: "POST",
+        body: newFormData,
+      }
+    );
 
     const result = await res.json();
 

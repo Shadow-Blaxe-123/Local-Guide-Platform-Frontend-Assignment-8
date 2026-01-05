@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import LoginSuccessToast from "@/components/modules/public/auth/LoginSuccessToast";
 import LogoutSuccessToast from "@/components/modules/public/auth/LogoutSuccessToast";
+import BookingToast from "@/components/modules/public/BookingToast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Toaster richColors position="top-center" />
         <LoginSuccessToast />
         <LogoutSuccessToast />
+        <BookingToast />
         {children}
       </body>
     </html>

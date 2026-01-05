@@ -81,9 +81,7 @@ commented out so that it does not count towards the completed rate.
 
 ### 4.8 Listing Details Page (`/tours/[id]`)
 
-- Full tour description, photos, host info.
-- **Booking Widget**: Select Date/Time -> "Request to Book".
-- **Reviews Section**: Read past traveler experiences.
+- **Booking Widget**: Select Date/Time -> "Request to Book"
 
 ## 5. Optional Features
 
@@ -111,7 +109,6 @@ commented out so that it does not count towards the completed rate.
 
 ### 2. Error Handling
 
-- Proper error handling must be implemented throughout the application.
 - Users should see friendly error messages (e.g., toasts, alerts) instead of app crashes or silent failures.
 - Backend errors should be gracefully caught and communicated to the frontend.
 
