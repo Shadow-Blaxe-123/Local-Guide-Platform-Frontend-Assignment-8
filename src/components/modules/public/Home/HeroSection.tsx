@@ -6,17 +6,26 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Search } from "lucide-react";
 import Image from "next/image";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useRouter } from "next/navigation";
 
 export default function HeroSection() {
-  const [destination, setDestination] = useState("");
+  const [city, setcity] = useState("");
   const [category, setCategory] = useState("");
+  const router = useRouter();
 
   const handleSearch = () => {
-    // TODO: Implement search functionality here
     console.log("Search payload:", {
-      destination,
+      city,
       category,
     });
+    router.push(`/explore?city=${city}&category=${category}`);
   };
 
   return (
@@ -36,22 +45,35 @@ export default function HeroSection() {
             {/* Search Card */}
             <Card className="shadow-lg">
               <CardContent className="p-4">
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="relative">
                     <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
                     <Input
                       className="pl-9"
-                      placeholder="Where are you going?"
-                      value={destination}
-                      onChange={(e) => setDestination(e.target.value)}
+                      placeholder="Which city are you going?"
+                      value={city}
+                      onChange={(e) => setcity(e.target.value)}
                     />
                   </div>
-
-                  <Input
-                    placeholder="Category (Food, History…)"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                  />
+                  <div>
+                    <Select
+                      onValueChange={(value) => setCategory(value)}
+                      defaultValue=""
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Category" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="CULTURAL">Cultural</SelectItem>
+                        <SelectItem value="FOOD">Food</SelectItem>
+                        <SelectItem value="ADVENTURE">Adventure</SelectItem>
+                        <SelectItem value="RELIGIOUS">Religious</SelectItem>
+                        <SelectItem value="NATURE">Nature</SelectItem>
+                        <SelectItem value="HISTORICAL">Historical</SelectItem>
+                        <SelectItem value="OTHER">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
                   <Button onClick={handleSearch} className="w-full col-span-2">
                     <Search className="mr-2 h-4 w-4" />

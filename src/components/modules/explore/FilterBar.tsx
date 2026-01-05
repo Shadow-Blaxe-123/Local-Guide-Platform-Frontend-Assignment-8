@@ -8,16 +8,32 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 function FilterBar() {
-  // TODO: Implement state and handlers for filters
-  const [city, setCity] = useState("");
-  const [category, setCategory] = useState<string | undefined>(undefined);
-  const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
-  const [minPrice, setMinPrice] = useState<number | undefined>(undefined);
-  // Filter Bar
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
+  const [city, setCity] = useState(searchParams.get("city") ?? "");
+  const [category, setCategory] = useState(searchParams.get("category") ?? "");
+  const [maxPrice, setMaxPrice] = useState<string>(
+    searchParams.get("maxPrice") ?? ""
+  );
+  const [minPrice, setMinPrice] = useState<string>(
+    searchParams.get("minPrice") ?? ""
+  );
+
+  const handleSearch = () => {
+    const qs = new URLSearchParams();
+
+    if (city) qs.set("city", city);
+    if (category) qs.set("category", category);
+    if (minPrice) qs.set("minPrice", minPrice);
+    if (maxPrice) qs.set("maxPrice", maxPrice);
+
+    router.push(`/explore?${qs.toString()}`);
+  };
   return (
     <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-10">
       <Input
@@ -45,22 +61,16 @@ function FilterBar() {
         type="number"
         placeholder="Max Price"
         value={maxPrice || ""}
-        onChange={(e) => setMaxPrice(Number(e.target.value))}
+        onChange={(e) => setMaxPrice(e.target.value)}
       />
       <Input
         type="number"
         placeholder="Min Price"
         value={minPrice || ""}
-        onChange={(e) => setMinPrice(Number(e.target.value))}
+        onChange={(e) => setMinPrice(e.target.value)}
       />
 
-      <Button
-        onClick={() =>
-          console.log("Search clicked", { city, category, maxPrice })
-        }
-      >
-        Search
-      </Button>
+      <Button onClick={handleSearch}>Search</Button>
     </div>
   );
 }

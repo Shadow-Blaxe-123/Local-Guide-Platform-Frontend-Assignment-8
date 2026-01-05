@@ -3,6 +3,7 @@
 import { ApiResponse, Tour } from "@/types";
 
 export async function getAllTours(query: string): Promise<ApiResponse<Tour[]>> {
+  console.log(`${process.env.NEXT_BACKEND_URL}/tour/all?${query}`);
   const response = await fetch(
     `${process.env.NEXT_BACKEND_URL}/tour/all?${query}`,
     {
