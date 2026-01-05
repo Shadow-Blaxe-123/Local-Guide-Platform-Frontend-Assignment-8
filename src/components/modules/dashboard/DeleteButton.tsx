@@ -20,9 +20,10 @@ function DeleteButton({ route }: { route: string }) {
     );
 
     const data = (await response.json()) as ApiResponse<unknown>;
+    console.log(data);
     if (data.success) {
       router.refresh();
-      toast.success("User deleted");
+      toast.success("Deletion successful");
     }
     return data;
   };

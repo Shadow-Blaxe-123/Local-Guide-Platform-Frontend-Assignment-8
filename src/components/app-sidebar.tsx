@@ -77,6 +77,10 @@ export async function AppSidebar({
         url: "/admin/users",
       },
       {
+        title: "Manage Bookings",
+        url: "/admin/booking",
+      },
+      {
         title: "Profile",
         url: "/profile",
       }

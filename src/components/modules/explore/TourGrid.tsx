@@ -9,12 +9,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Tour } from "@/types";
+import { Tour, UserRole } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+import DeleteButton from "../dashboard/DeleteButton";
 
-function TourGrid({ tours }: { tours: Tour[] }) {
+function TourGrid({ tours, role }: { tours: Tour[]; role: UserRole }) {
   const defaultImage = "/no-photo.jpg";
+  const canDelete = role === "TOURIST" || role === "ADMIN";
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -97,12 +99,15 @@ function TourGrid({ tours }: { tours: Tour[] }) {
                   </div>
                   <p className="text-green-600 font-bold">${tour.price}</p>
                 </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <Link href={`/tours/${tour.id}`}>
+                    <Button size="sm" className="w-full  bg-blue-800">
+                      View Details
+                    </Button>
+                  </Link>
 
-                <Link href={`/tours/${tour.id}`}>
-                  <Button size="sm" className="w-full mt-2 bg-blue-800">
-                    View Details
-                  </Button>
-                </Link>
+                  {canDelete && <DeleteButton route={`/tour/${tour.id}`} />}
+                </div>
               </CardContent>
             </Card>
           );

@@ -37,40 +37,21 @@ This project democratizes travel guiding, allowing locals to monetize their know
 - **Booking Workflow**:
   - Guide accepts or declines.
 
-### 4.2 Authentication Pages
-
-- **`/register`** Admin accounts are created separately.
-
 ### 4.5 Dashboard (`/dashboard`)
 
 - **For Guides**: Upcoming bookings, Pending requests, My Listings.
-- **For Admin**: User Management, Listing Management, Booking Management.
+- **For Admin**: Listing Management, Booking Management.
 
 ### 4.6 Listing Management (`/dashboard/listings`)
 
 - List of created tours.
 - **Add/Edit Page**: Form to input tour details, upload photos, set tour price.
 
-### 🌐 API Endpoints
-
-| Method | Endpoint            | Description           |
-| :----- | :------------------ | :-------------------- |
-| PATCH  | `/api/listings/:id` | Update tour listing   |
-| DELETE | `/api/listings/:id` | Delete tour listing   |
-| PATCH  | `/api/bookings/:id` | Accept/Reject booking |
-
 ## Assignment 8 - Batch 5
 
 ## Mandatory Requirements (Critical)
 
 **Failure to meet the following requirements will result in ZERO marks.**
-
-### 2. Error Handling
-
-- Users should see friendly error messages (e.g., toasts, alerts) instead of app crashes or silent failures.
-- Backend errors should be gracefully caught and communicated to the frontend.
-
----
 
 ## 🛠️ Technology Stack
 
