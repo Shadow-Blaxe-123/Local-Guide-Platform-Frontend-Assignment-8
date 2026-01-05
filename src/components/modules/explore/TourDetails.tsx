@@ -119,7 +119,12 @@ export default function TourDetail({
                   <Globe className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Local Expert</p>
+                  <p className="text-sm font-medium">
+                    {tour.guide?.user?.name}
+                  </p>
+                  <p className="text-sm font-medium">
+                    {tour.guide?.user?.email}
+                  </p>
                   <p className="text-xs text-muted-foreground">
                     Verified Guide
                   </p>

@@ -23,11 +23,21 @@ export default function CompleteBookingButton({
         {
           method: "PATCH",
           credentials: "include",
+          body: JSON.stringify({ status: "COMPLETED" }),
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
-      if (response.ok) {
+      const res = await response.json();
+      if (res.success) {
         toast.success("Tour completed successfully");
         router.refresh();
+      } else if (
+        res.message ===
+        "You cannot complete the tour before its scheduled date."
+      ) {
+        toast.error(res.message);
       }
     } catch (error) {
       console.error("Error completing tour:", error);

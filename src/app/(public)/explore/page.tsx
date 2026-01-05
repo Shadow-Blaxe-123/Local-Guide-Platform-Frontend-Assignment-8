@@ -37,7 +37,7 @@ export default async function ExploreToursPage({
 
         {/* Content */}
         <main>
-          <TourGrid tours={data.data} />
+          <TourGrid tours={data.data} role={"TOURIST"} />
         </main>
       </div>
     </div>
