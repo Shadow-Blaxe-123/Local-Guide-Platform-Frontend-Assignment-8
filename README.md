@@ -18,7 +18,6 @@ This project democratizes travel guiding, allowing locals to monetize their know
 
 - **Roles**:
   - **Guide**: Can create tour listings and accept bookings.
-  - **Admin**: tour listings and bookings.
 
 ### 3.3 Tour Listing Management (CRUD)
 
@@ -40,7 +39,6 @@ This project democratizes travel guiding, allowing locals to monetize their know
 ### 4.5 Dashboard (`/dashboard`)
 
 - **For Guides**: Upcoming bookings, Pending requests, My Listings.
-- **For Admin**: Listing Management, Booking Management.
 
 ### 4.6 Listing Management (`/dashboard/listings`)
 
