@@ -17,7 +17,6 @@ commented out so that it does not count towards the completed rate.
 - Enable guides to list services/tours and travelers to book them.
 - Provide detailed profiles with reviews and verification to ensure trust.
 - Implement a secure booking workflow.
-- Create an engaging, friendly UI/UX for discovering experiences.
 
 ## 3. Core Features Breakdown
 
