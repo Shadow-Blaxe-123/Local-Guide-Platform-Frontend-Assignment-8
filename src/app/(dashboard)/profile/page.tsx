@@ -15,6 +15,13 @@ export default async function ProfilePage() {
   return (
     <div className="max-w-7xl md:w-full mx-auto space-y-8">
       {/* Header */}
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">Profile</h1>
+        <p className="text-muted-foreground mt-1">
+          Overview of your information
+        </p>
+      </div>
       <Card>
         <CardContent className="flex flex-col md:flex-row items-center gap-6 p-6">
           <Avatar className="h-24 w-24">
