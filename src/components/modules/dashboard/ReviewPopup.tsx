@@ -33,6 +33,10 @@ export default function ReviewDialog({
 
   const canReview = bookingStatus === "COMPLETED";
 
+  if (bookingStatus !== "COMPLETED") {
+    return null;
+  }
+
   const handleSubmit = async () => {
     if (!canReview) {
       toast.error("You can only review after completing the tour.");

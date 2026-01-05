@@ -1,4 +1,5 @@
 import AllBookingsCard from "@/components/modules/dashboard/AllBookingsCard";
+import CompleteBookingButton from "@/components/modules/dashboard/CompleteBookingBtn";
 import ReviewDialog from "@/components/modules/dashboard/ReviewPopup";
 import getAllBookings from "@/services/dashboard/getAllBookings";
 import { Booking } from "@/types/tour";
@@ -19,8 +20,13 @@ async function TouristBookingsPage() {
             {/* Booking Card */}
             <AllBookingsCard booking={booking} />
 
-            {/* Review Button */}
-            <div className="self-end">
+            {/* Actions */}
+            <div className="flex justify-end gap-2">
+              <CompleteBookingButton
+                status={booking.status}
+                bookingId={booking.id}
+              />
+
               <ReviewDialog
                 bookingStatus={booking.status}
                 tourId={booking.tourId || ""}
