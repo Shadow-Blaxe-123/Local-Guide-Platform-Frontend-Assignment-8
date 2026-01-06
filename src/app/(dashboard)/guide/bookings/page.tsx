@@ -6,15 +6,18 @@ import getAllBookings from "@/services/dashboard/getAllBookings";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
+import { getCookie } from "@/lib/tokenHandler";
 
 async function updateBookingStatus(id: string, status: string) {
   try {
+    const accessToken = await getCookie("accessToken");
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/booking/guide/${id}/`,
       {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `${accessToken}`,
         },
         body: JSON.stringify({ status }),
         credentials: "include",

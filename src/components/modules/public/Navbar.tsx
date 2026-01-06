@@ -9,13 +9,10 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { getCookie } from "@/lib/tokenHandler";
 import LogoutButton from "./auth/LogoutButton";
 import { getUserInfo } from "@/services/auth/getUserinfo";
 
 const Navbar = async () => {
-  const accessToken = await getCookie("accessToken");
-
   const user = await getUserInfo();
 
   const navItems = [
@@ -71,7 +68,7 @@ const Navbar = async () => {
         </nav>
 
         <div className="hidden md:flex items-center space-x-2">
-          {accessToken ? (
+          {user ? (
             <LogoutButton />
           ) : (
             <>

@@ -23,6 +23,7 @@ import { toast } from "sonner";
 import { TourCategory, TourStatus } from "@/types/tour";
 import z from "zod";
 import { useRouter } from "next/navigation";
+import { getCookie } from "@/lib/tokenHandler";
 
 interface CreateTourDialogProps {
   onCreate?: () => void; // optional callback after tour creation
@@ -124,10 +125,14 @@ export default function CreateTourDialog({ onCreate }: CreateTourDialogProps) {
 
     try {
       console.log("Tour payload (FormData):", formData);
+      const accessToken = await getCookie("accessToken");
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/tour/create`,
         {
           method: "POST",
+          headers: {
+            Authorization: `${accessToken}`,
+          },
           body: formData,
           credentials: "include",
           cache: "no-store",

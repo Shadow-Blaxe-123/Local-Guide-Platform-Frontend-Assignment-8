@@ -26,6 +26,7 @@ import { useRouter } from "next/navigation";
 import { Tour } from "@/types";
 import Image from "next/image";
 import { Edit2 } from "lucide-react";
+import { getCookie } from "@/lib/tokenHandler";
 
 interface EditTourDialogProps {
   tour: Tour; // pass the tour object to edit
@@ -130,6 +131,7 @@ export default function EditTourDialog({
     newImages.forEach((file) => formData.append("files", file));
 
     try {
+      const accessToken = await getCookie("accessToken");
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/tour/${tour.id}`,
         {
@@ -137,6 +139,9 @@ export default function EditTourDialog({
           body: formData,
           credentials: "include",
           cache: "no-store",
+          headers: {
+            Authorization: ` ${accessToken}`,
+          },
         }
       );
       const res = await response.json();

@@ -14,8 +14,8 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { ApiResponse, User } from "@/types";
 import { useRouter } from "next/navigation";
+import { getCookie } from "@/lib/tokenHandler";
 
-// Dummy service for now
 async function createAdmin(payload: {
   name: string;
   email: string;
@@ -23,6 +23,7 @@ async function createAdmin(payload: {
 }): Promise<ApiResponse<User>> {
   console.log("Creating admin:", payload);
   // Replace with real API call
+  const accessToken = await getCookie("accessToken");
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/create-admin`,
     {
@@ -30,6 +31,7 @@ async function createAdmin(payload: {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: ` ${accessToken}`,
       },
       credentials: "include",
     }

@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { getCookie } from "@/lib/tokenHandler";
 import { BookingStatus } from "@/types/tour";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -18,6 +19,7 @@ export default function CompleteBookingButton({
   if (status !== "CONFIRMED") return null;
   const handleComplete = async () => {
     try {
+      const accessToken = await getCookie("accessToken");
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/booking/tourist/${bookingId}`,
         {
@@ -26,6 +28,7 @@ export default function CompleteBookingButton({
           body: JSON.stringify({ status: "COMPLETED" }),
           headers: {
             "Content-Type": "application/json",
+            Authorization: ` ${accessToken}`,
           },
         }
       );
