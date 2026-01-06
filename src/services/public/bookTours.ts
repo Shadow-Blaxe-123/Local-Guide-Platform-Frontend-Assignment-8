@@ -1,3 +1,4 @@
+"use server";
 import { ApiResponse } from "@/types";
 import { Booking } from "@/types/tour";
 import { cookies } from "next/headers";

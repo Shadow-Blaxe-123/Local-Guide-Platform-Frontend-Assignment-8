@@ -1,43 +1,12 @@
 "use client";
-
+export const dynamic = "force-dynamic";
 import AllBookingsCard from "@/components/modules/dashboard/AllBookingsCard";
 import { Booking, BookingStatus } from "@/types/tour";
 import getAllBookings from "@/services/dashboard/getAllBookings";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
-import { getCookie } from "@/lib/tokenHandler";
-
-async function updateBookingStatus(id: string, status: string) {
-  try {
-    const accessToken = await getCookie("accessToken");
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/booking/guide/${id}/`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `${accessToken}`,
-        },
-        body: JSON.stringify({ status }),
-        credentials: "include",
-      }
-    );
-
-    const data = await response.json();
-    if (data.success) {
-      toast.success(`Booking ${status.toLowerCase()} successfully`);
-      return data.data;
-    } else {
-      toast.error(data.message || "Failed to update booking");
-      return null;
-    }
-  } catch (err) {
-    toast.error("Something went wrong");
-    console.error(err);
-    return null;
-  }
-}
+import updateBookingStatus from "@/services/dashboard/updateBooking";
 
 export default function GuideBookingsPage() {
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -51,7 +20,14 @@ export default function GuideBookingsPage() {
   }, []);
 
   const handleStatusChange = async (id: string, status: string) => {
-    const updated = await updateBookingStatus(id, status);
+    const data = await updateBookingStatus(id, status);
+    if (data.success) {
+      toast.success(`Booking ${status.toLowerCase()} successfully`);
+    } else {
+      toast.error(data.message || "Failed to update booking");
+      return null;
+    }
+    const updated = data.data;
     if (updated) {
       setBookings((prev) =>
         prev.map((b) =>
