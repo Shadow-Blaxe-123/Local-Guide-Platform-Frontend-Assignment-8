@@ -73,6 +73,10 @@ export async function AppSidebar({
         url: "/admin/tours",
       },
       {
+        title: "Create New Admin",
+        url: "/admin/users/create-admin",
+      },
+      {
         title: "Manage Users",
         url: "/admin/users",
       },

@@ -7,6 +7,7 @@ import {
 } from "@/types/schema/auth.zod";
 import loginUser from "./loginUser";
 import { parseArrayFields } from "@/lib/parseArrayFields";
+import { cookies } from "next/headers";
 
 export default async function registerUser(
   currentState: any,
@@ -15,7 +16,7 @@ export default async function registerUser(
   try {
     const role = formData.get("role");
 
-    if (role !== "tourist" && role !== "guide") {
+    if (role !== "tourist" && role !== "guide" && role !== "admin") {
       return {
         success: false,
         message: "Invalid role",
@@ -63,6 +64,35 @@ export default async function registerUser(
       };
 
       endpoint = "/user/create-tourist";
+    }
+    /* -------------------- ADMIN -------------------- */
+    if (role === "admin") {
+      const validationResult = registerTouristValidationSchema.safeParse({
+        name: formData.get("name"),
+        contactNumber: formData.get("contactNumber"),
+        email: formData.get("email"),
+        password: formData.get("password"),
+        confirmPassword: formData.get("confirmPassword"),
+        bio: formData.get("bio"),
+        languagesSpoken,
+      });
+
+      if (!validationResult.success) {
+        return {
+          success: false,
+          errors: validationResult.error.issues.map((issue: any) => ({
+            field: issue.path[0] ?? "_form",
+            message: issue.message,
+          })),
+          values: Object.fromEntries(formData),
+        };
+      }
+
+      validatedData = {
+        ...validationResult.data,
+      };
+
+      endpoint = "/user/create-admin";
     }
 
     /* -------------------- GUIDE -------------------- */
@@ -127,18 +157,33 @@ export default async function registerUser(
     if (file instanceof File && file.size > 0) {
       newFormData.append("file", file);
     }
+    let cookieHeader = "";
+
+    if (role === "admin") {
+      const cookieStore = await cookies();
+
+      cookieHeader = cookieStore
+        .getAll()
+        .map((c) => `${c.name}=${c.value}`)
+        .join("; ");
+    }
+    console.log(cookieHeader);
 
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}${endpoint}`,
       {
         method: "POST",
         body: newFormData,
+        credentials: "include",
+        headers: {
+          Cookie: cookieHeader, // ✅ THIS is what fixes auth
+        },
       }
     );
 
     const result = await res.json();
 
-    if (result.success) {
+    if (result.success && role !== "admin") {
       await loginUser(currentState, formData);
     }
 

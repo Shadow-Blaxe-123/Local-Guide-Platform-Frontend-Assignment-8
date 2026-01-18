@@ -13,7 +13,7 @@ import Link from "next/link";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 
-const RegisterForm = ({ role }: { role: "tourist" | "guide" }) => {
+const RegisterForm = ({ role }: { role: "tourist" | "guide" | "admin" }) => {
   const [state, formAction, ispending] = useActionState(registerUser, null);
   console.log("state:", state, "ispending: ", ispending);
   const getFieldError = (fieldName: string) => {
@@ -34,6 +34,9 @@ const RegisterForm = ({ role }: { role: "tourist" | "guide" }) => {
   useEffect(() => {
     if (state && !state.success && state.message) {
       toast.error(state.message);
+    }
+    if (state && state.success) {
+      toast.success("Registered successfully!");
     }
   }, [state]);
   return (
