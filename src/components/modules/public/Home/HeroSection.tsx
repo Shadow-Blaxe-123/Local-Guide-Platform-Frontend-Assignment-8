@@ -29,15 +29,15 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative w-full h-full bg-linear-to-b from-violet-400 to-white flex items-center justify-center">
+    <section className="relative w-full h-full bg-linear-to-b from-violet-700 to-violet-100 flex items-center justify-center">
       <div className="mx-auto max-w-7xl px-4 py-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
           {/* Left Content */}
           <div className="space-y-6">
-            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-violet-100 sm:text-5xl">
               Explore Cities Through the Eyes of a Local
             </h1>
-            <p className="text-lg text-slate-600 max-w-xl">
+            <p className="text-lg text-violet-100 max-w-xl">
               Discover authentic, personalized experiences hosted by verified
               local guides — from hidden food spots to immersive cultural tours.
             </p>
@@ -93,12 +93,13 @@ export default function HeroSection() {
 
           {/* Right Visual Placeholder */}
           <div className="hidden lg:flex justify-center">
-            <div className="relative w-105 h-105 rounded-2xl bg-slate-100 shadow-inner flex items-center justify-center text-slate-400">
+            <div className="relative w-105 h-full rounded-2xl bg-violet-200  flex items-center justify-center text-slate-40  shadow-lg  transform duration-500 hover:translate-x-5 hover:-translate-y-5 pointer-events-none">
               <Image
                 src={"/HeroSection.jpg"}
                 alt="Image"
                 width={420}
                 height={420}
+                className="rounded-2xl shadow-lg transform duration-500 hover:-translate-x-10 hover:translate-y-10 pointer-events-auto"
               />
             </div>
           </div>

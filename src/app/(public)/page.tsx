@@ -7,8 +7,8 @@ import TestimonialsSection from "@/components/modules/public/Home/TestimonialsSe
 
 function HomePage() {
   return (
-    <div className="grid gap-20">
-      <div className="min-h-screen flex items-center justify-center">
+    <div className="grid">
+      <div className="min-h-[75vh] flex items-center justify-center">
         <HeroSection />
       </div>
       <AboutUsSection />

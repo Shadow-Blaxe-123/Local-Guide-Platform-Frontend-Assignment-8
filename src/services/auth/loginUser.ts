@@ -7,7 +7,7 @@ import z from "zod";
 import { JwtPayload, verify } from "jsonwebtoken";
 
 import { redirect } from "next/navigation";
-import { UserRole } from "@/types";
+import { ApiResponse, UserInfo, UserRole } from "@/types";
 import { setCookie } from "@/lib/tokenHandler";
 import {
   getDefaultDashboardRoute,
@@ -57,8 +57,16 @@ export default async function loginUser(
         },
       }
     );
-    const result = await res.json();
+    const result: ApiResponse<UserInfo> = await res.json();
+    console.log("res:", result);
     console.log("res:", res);
+
+    if (res.status === 404) {
+      throw new Error("User not found");
+    }
+    if (result.message === "Invalid password") {
+      throw new Error(result.message);
+    }
 
     const setCookieHeaders = res.headers.getSetCookie();
 
