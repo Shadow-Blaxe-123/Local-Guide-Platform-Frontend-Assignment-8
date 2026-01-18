@@ -1,6 +1,7 @@
 import FilterBar from "@/components/modules/explore/FilterBar";
 import TourGrid from "@/components/modules/explore/TourGrid";
 import { getAllTours } from "@/services/public/getAllTours";
+import { Suspense } from "react";
 
 export default async function ExploreToursPage({
   searchParams,
@@ -39,7 +40,11 @@ export default async function ExploreToursPage({
 
         {/* Content */}
         <main>
-          <TourGrid tours={data.data} role={"TOURIST"} />
+          <Suspense
+            fallback={<TourGrid tours={[]} role="TOURIST" loading={true} />}
+          >
+            <TourGrid tours={data.data} role={"TOURIST"} loading={false} />
+          </Suspense>
         </main>
       </div>
     </div>

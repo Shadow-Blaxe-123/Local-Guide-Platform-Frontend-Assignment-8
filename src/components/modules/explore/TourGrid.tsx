@@ -14,14 +14,25 @@ import Image from "next/image";
 import Link from "next/link";
 import DeleteButton from "../dashboard/DeleteButton";
 import EditTourDialog from "../dashboard/EditTours";
+import CardSkeleton from "./CardSkeleton";
 
-function TourGrid({ tours, role }: { tours: Tour[]; role: UserRole }) {
+function TourGrid({
+  tours,
+  role,
+  loading,
+}: {
+  tours: Tour[];
+  role: UserRole;
+  loading: boolean;
+}) {
   const defaultImage = "/no-photo.jpg";
   const canDelete = role === "GUIDE" || role === "ADMIN";
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4  gap-8">
-      {tours.length > 0 ? (
+      {loading ? (
+        Array.from({ length: 4 }).map((_, i) => <CardSkeleton key={i} />)
+      ) : tours.length > 0 ? (
         tours.map((tour) => {
           const images =
             tour.images && tour.images.length > 0
