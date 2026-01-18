@@ -20,7 +20,7 @@ function TourGrid({ tours, role }: { tours: Tour[]; role: UserRole }) {
   const canDelete = role === "GUIDE" || role === "ADMIN";
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4  gap-8">
       {tours.length > 0 ? (
         tours.map((tour) => {
           const images =

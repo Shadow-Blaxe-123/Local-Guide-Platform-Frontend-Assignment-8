@@ -10,6 +10,7 @@ export default async function ExploreToursPage({
     category?: string;
     maxPrice?: string;
     minPrice?: string;
+    sort?: string;
   }>;
 }) {
   const params = await searchParams;
@@ -20,6 +21,10 @@ export default async function ExploreToursPage({
   if (params.category) qs.set("category", params.category);
   if (params.minPrice) qs.set("minPrice", params.minPrice);
   if (params.maxPrice) qs.set("maxPrice", params.maxPrice);
+  if (params.sort) {
+    qs.set("sortBy", "price");
+    qs.set("sort", params.sort);
+  }
 
   console.log("Final query string:", qs.toString());
 
@@ -29,11 +34,8 @@ export default async function ExploreToursPage({
       <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">
         Explore Tours
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8">
-        {/* Sidebar */}
-        <aside className="md:sticky md:top-24 h-fit">
-          <FilterBar />
-        </aside>
+      <div className="grid grid-cols-1 gap-8">
+        <FilterBar />
 
         {/* Content */}
         <main>

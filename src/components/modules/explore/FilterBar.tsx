@@ -23,6 +23,7 @@ function FilterBar() {
   const [minPrice, setMinPrice] = useState<string>(
     searchParams.get("minPrice") ?? ""
   );
+  const [sort, setSort] = useState<string>(searchParams.get("sort") ?? "");
 
   const handleSearch = () => {
     const qs = new URLSearchParams();
@@ -31,11 +32,12 @@ function FilterBar() {
     if (category) qs.set("category", category);
     if (minPrice) qs.set("minPrice", minPrice);
     if (maxPrice) qs.set("maxPrice", maxPrice);
+    if (sort) qs.set("sort", sort);
 
     router.push(`/explore?${qs.toString()}`);
   };
   return (
-    <div className="grid grid-cols-1 gap-4 mb-10">
+    <div className="grid grid-cols-1 md:grid-cols-6 gap-4 mb-10">
       <Input
         placeholder="City"
         value={city}
@@ -54,6 +56,15 @@ function FilterBar() {
           <SelectItem value="NATURE">Nature</SelectItem>
           <SelectItem value="HISTORICAL">Historical</SelectItem>
           <SelectItem value="OTHER">Other</SelectItem>
+        </SelectContent>
+      </Select>
+      <Select onValueChange={(value) => setSort(value)} defaultValue="">
+        <SelectTrigger className="w-full">
+          <SelectValue placeholder="Sort By" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="asc">Low price to high</SelectItem>
+          <SelectItem value="desc">High price to low</SelectItem>
         </SelectContent>
       </Select>
 
