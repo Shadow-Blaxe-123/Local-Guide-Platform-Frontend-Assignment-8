@@ -16,18 +16,17 @@ const defaultReviews: Review[] = [
   {
     id: "2",
 
-    tourist: { user: { name: "Michael Lee" } },
+    tourist: { user: { name: "Mike Lee" } },
     rating: 5,
-    comment: "Very knowledgeable guide and a fun tour. Highly recommend!",
+    comment: "A fun tour. Highly recommend!",
   },
   {
     id: "3",
 
-    tourist: { user: { name: "Sophia Martinez" } },
+    tourist: { user: { name: "Sophia Marquis" } },
     rating: 5,
 
-    comment:
-      "The tour exceeded our expectations. Friendly and professional guide.",
+    comment: "Friendly and professional guide.",
   },
 ];
 

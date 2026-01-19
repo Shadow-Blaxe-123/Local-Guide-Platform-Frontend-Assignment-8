@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import LogoutButton from "./auth/LogoutButton";
 import { getUserInfo } from "@/services/auth/getUserinfo";
+import ProfileDropdown from "./ProfileDropdown";
 
 const Navbar = async () => {
   const user = await getUserInfo();
@@ -26,24 +26,24 @@ const Navbar = async () => {
       { href: "/tourist/bookings", label: "My Bookings" },
       { href: "/tourist/dashboard", label: "Dashboard" },
 
-      { href: "/profile", label: "Profile" }
+      { href: "/profile", label: "Profile" },
     );
   } else if (user?.role === "GUIDE") {
     navItems.push(
       { href: "/guide/dashboard", label: "Dashboard" },
-      { href: "/profile", label: "Profile" }
+      { href: "/profile", label: "Profile" },
     );
   } else if (user?.role === "ADMIN") {
     navItems.push(
       { href: "/admin/dashboard", label: "Dashboard" },
       { href: "/admin/users", label: "Manage Users" },
       { href: "/admin/tours", label: "Manage Tours" },
-      { href: "/profile", label: "Profile" }
+      { href: "/profile", label: "Profile" },
     );
   } else {
     navItems.push(
       { href: "/explore", label: "Explore Tours" },
-      { href: "#becomeAGuide", label: "Become a Guide" }
+      { href: "#becomeAGuide", label: "Become a Guide" },
     );
   }
 
@@ -69,7 +69,11 @@ const Navbar = async () => {
 
         <div className="hidden md:flex items-center space-x-2">
           {user ? (
-            <LogoutButton />
+            <ProfileDropdown
+              name={user.name}
+              pic={user.pic ?? ""}
+              role={user.role}
+            />
           ) : (
             <>
               <Link href="/login" className="text-lg font-medium">

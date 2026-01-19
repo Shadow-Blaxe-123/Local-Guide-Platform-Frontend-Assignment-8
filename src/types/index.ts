@@ -5,6 +5,7 @@ export interface UserInfo {
   name: string;
   email: string;
   role: UserRole;
+  pic: string | null;
 }
 
 export interface ApiResponse<T> {
