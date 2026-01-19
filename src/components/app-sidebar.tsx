@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { getUserInfo } from "@/services/auth/getUserinfo";
-import LogoutButton from "./modules/public/auth/LogoutButton";
+import ProfileDropdown from "./modules/public/ProfileDropdown";
 
 interface NavItem {
   title: string;
@@ -25,6 +25,10 @@ export async function AppSidebar({
   const navMain: NavItem[] = [];
 
   const user = await getUserInfo();
+
+  if (!user) {
+    throw new Error("User not found");
+  }
 
   if (user?.role === "TOURIST") {
     navMain.push(
@@ -39,7 +43,7 @@ export async function AppSidebar({
       {
         title: "Profile",
         url: "/profile",
-      }
+      },
     );
   }
   if (user?.role === "GUIDE") {
@@ -59,7 +63,7 @@ export async function AppSidebar({
       {
         title: "Profile",
         url: "/profile",
-      }
+      },
     );
   }
   if (user?.role === "ADMIN") {
@@ -87,7 +91,7 @@ export async function AppSidebar({
       {
         title: "Profile",
         url: "/profile",
-      }
+      },
     );
   }
   console.log(user);
@@ -114,7 +118,11 @@ export async function AppSidebar({
         <NavMain items={navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <LogoutButton />
+        <ProfileDropdown
+          name={user?.name}
+          pic={user?.pic as string}
+          role={user?.role}
+        />
       </SidebarFooter>
     </Sidebar>
   );
