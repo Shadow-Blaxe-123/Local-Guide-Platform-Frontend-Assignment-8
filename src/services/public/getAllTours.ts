@@ -21,7 +21,7 @@ export async function getAllTours(query: string): Promise<ApiResponse<Tour[]>> {
       },
       cache: "no-store",
       credentials: "include",
-    }
+    },
   );
   const data = await response.json();
   console.log("Fetched tours:", data);
