@@ -22,7 +22,7 @@ export default function Pagination({
     router.push(`/explore?${qs.toString()}`);
   };
 
-  //   if (totalPages <= 1) return null; // no pagination needed
+  if (totalPages < 1) return null; // no pagination needed
 
   const prevDisabled = currentPage <= 1;
   const nextDisabled = currentPage >= totalPages;
