@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { getUserInfo } from "@/services/auth/getUserinfo";
 import ProfileDropdown from "./ProfileDropdown";
+import { ModeToggle } from "./ModeToggle";
 
 const Navbar = async () => {
   const user = await getUserInfo();
@@ -48,7 +49,7 @@ const Navbar = async () => {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b-2 shadow-lg bg-background/95 backdrop-blur  dark:bg-background/95 ">
+    <header className="sticky top-0 z-50 w-full border-b-2 shadow-lg bg-background/80 backdrop-blur  dark:bg-background/95 ">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
           <Image src="/logo.png" alt="logo" width={32} height={32} />
@@ -87,6 +88,7 @@ const Navbar = async () => {
               </Link>
             </>
           )}
+          <ModeToggle />
         </div>
 
         {/* Mobile Menu */}
